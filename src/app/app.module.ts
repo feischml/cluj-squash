@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 // main pages
 import { HomeComponent } from './home/home.component';
 import { ClubsComponent } from './clubs/clubs.component';
+import { ClubsFormComponent } from  './clubs/clubsform.component';
 import { EventsComponent } from './events/events.component';
 import { PeopleComponent } from './people/people.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
@@ -29,6 +30,7 @@ import { NavbarModules } from './navbar/navbar.module';
     PeopleComponent,
     ProsquashComponent,
     ClubsComponent,
+    ClubsFormComponent,
     FooterComponent,
     NavbarComponent
   ],

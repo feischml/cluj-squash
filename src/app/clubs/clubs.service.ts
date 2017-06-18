@@ -15,4 +15,15 @@ export class ClubsService{
             map( clubs => clubs.json());
     }
 
+    // Return a club with a given name or id
+    getClub(name?: String, id?: String){
+        var route = '';
+        if (name)
+            route = '/clubs/clubname/' + name;
+        if (id)
+            route = '/clubs/clubid/' + id;
+        return this._http.get(AppConstants.serverUrl + route).
+            map( club => club.json());        
+    }
+
 }

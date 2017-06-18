@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClubsService } from './clubs.service';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     templateUrl: './clubs.template.html',
@@ -10,7 +12,9 @@ export class ClubsComponent{
     componentTitle = "Clubs";
     clubs = [];
 
-    constructor( private _clubService: ClubsService ){ }
+    constructor( private _clubService: ClubsService,
+                 private _router: Router,
+                 private _route: ActivatedRoute){ }
 
     // When the component is initialized get the list of clubs
     ngOnInit(){
@@ -24,6 +28,7 @@ export class ClubsComponent{
                 console.log(err);
             }
         );
+        
     }
 
 }
