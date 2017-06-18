@@ -13,7 +13,7 @@ export class ClubsService{
     // Return the list of Clubs from the server
     getClubs(){
         var route = '/clubs/clubs';
-        return this._http.get(AppConstants.serverUrl + route).
+        return this._http.get(new AppConstants().getServerUrl() + route).
             map( clubs => clubs.json());
     }
 
@@ -24,7 +24,7 @@ export class ClubsService{
             route = '/clubs/clubname/' + name;
         if (id)
             route = '/clubs/clubid/' + id;
-        return this._http.get(AppConstants.serverUrl + route).
+        return this._http.get(new AppConstants().getServerUrl() + route).
             map( club => club.json());        
     }
 
@@ -34,17 +34,17 @@ export class ClubsService{
         if (!club._id){
             route = '/clubs/create';
 
-            console.log(AppConstants.serverUrl + route + "   " + JSON.stringify(club));
+            console.log(new AppConstants().getServerUrl() + route + "   " + JSON.stringify(club));
 
             return this._http.post(
-                    AppConstants.serverUrl + route, 
+                    new AppConstants().getServerUrl() + route, 
                     JSON.stringify(club),
                     { headers: new AppConstants().getHeaders() },
                 ).map(res => res.json());
         } else {
             route = '/clubs/update';  
             return this._http.put(
-                    AppConstants.serverUrl + route, 
+                    new AppConstants().getServerUrl() + route, 
                     JSON.stringify(club),
                     { headers: new AppConstants().getHeaders() }
                 ).map(res => res.json());
