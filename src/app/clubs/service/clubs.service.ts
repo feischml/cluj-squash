@@ -33,8 +33,14 @@ export class ClubsService{
         var route;
         if (!club._id){
             route = '/clubs/create';
-            return this._http.post(AppConstants.serverUrl + route, JSON.stringify(club))
-			.map(res => res.json());
+
+            console.log(AppConstants.serverUrl + route + "   " + JSON.stringify(club));
+
+            return this._http.post(
+                    AppConstants.serverUrl + route, 
+                    JSON.stringify(club),
+                    { headers: new AppConstants().getHeaders() },
+                ).map(res => res.json());
         } else {
             route = '/clubs/update';  
             return this._http.put(

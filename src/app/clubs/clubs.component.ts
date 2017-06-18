@@ -23,8 +23,6 @@ export class ClubsComponent implements OnInit{
         this._clubService.getClubs().subscribe(
             clubs => { 
                 this.clubs = clubs;  
-                // ToDo delete - for check purpose - show it in the console
-                console.log(this.clubs);
             }, 
             function(err){
                 console.log(err);

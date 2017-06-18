@@ -65,7 +65,6 @@ export class ClubsFormComponent implements OnInit{
     save(){        
         var result = this._clubsService.updateCreateClub(this.club);
         result.subscribe(res => {
-            console.log(res);
             this._router.navigate(['clubs']);
         });
     }

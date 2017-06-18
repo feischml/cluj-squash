@@ -9,6 +9,7 @@ import { ProsquashComponent } from './prosquash/prosquash.component';
 export const routing = RouterModule.forRoot([
     { path: 'home', component: HomeComponent },
     { path: 'clubs', component: ClubsComponent },
+    { path: 'clubs/create', component: ClubsFormComponent },
     { path: 'clubs/clubname/:name', component: ClubsFormComponent },
     { path: 'clubs/clubid/:id', component: ClubsFormComponent },
     { path: 'events', component: EventsComponent },
