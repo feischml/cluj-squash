@@ -7,9 +7,11 @@ import 'rxjs/add/operator/switchMap';
     templateUrl: './clubs.template.html',
     providers: [ ClubsService ]
 })
-export class ClubsComponent{
+export class ClubsComponent implements OnInit{
 
     componentTitle = "Clubs";
+
+    // List of all the clubs
     clubs = [];
 
     constructor( private _clubService: ClubsService,
@@ -19,11 +21,11 @@ export class ClubsComponent{
     // When the component is initialized get the list of clubs
     ngOnInit(){
         this._clubService.getClubs().subscribe(
-            function(clubs){
-                this.clubs = clubs;
+            clubs => { 
+                this.clubs = clubs;  
                 // ToDo delete - for check purpose - show it in the console
                 console.log(this.clubs);
-            },
+            }, 
             function(err){
                 console.log(err);
             }

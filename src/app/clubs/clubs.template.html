@@ -1,3 +1,29 @@
 <div class="container">
     <h1>Clubs</h1>
+
+    <table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Clubname</th>
+			<th>Description</th>
+			<th>Phone</th>
+			<th>Link</th>
+            <th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let club of clubs">
+			<td>{{ club.clubname }}</td>
+			<td>{{ club.description }}</td>
+            <td>{{ club.phone }}</td>
+            <td>{{ club.webpage }}</td>
+			<td>
+                <a [routerLink]="['/clubs/clubid', club._id]">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 </div>

@@ -1,3 +1,29 @@
 <div class="container">
     <h1>Club Details</h1>
+    <div class="row">
+    <div class="col-md-6 well">
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <fieldset>
+                <div class="form-group">
+                    <label>Clubname</label>
+                    <input [(ngModel)]="club.clubname" name="clubname" #clubname formControlName="clubname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input [(ngModel)]="club.description" #description formControlName="description" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input [(ngModel)]="club.phone" formControlName="phone" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Webpage</label>
+                    <input [(ngModel)]="club.webpage" formControlName="webpage" type="text" class="form-control">
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">
+                Save Changes
+            </button>
+        </form>
+    </div>
 </div>
