@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AppConstants} from '../app.constants';
+import { AppConstants} from '../../app.constants';
 
 @Injectable()
 export class ClubsService{
