@@ -14,7 +14,18 @@
                     <li [class.active]="isRouteActive('events')" role="presentation"><a routerLink="events">Events </a></li>
                     <li [class.active]="isRouteActive('prosquash')" role="presentation"><a routerLink="prosquash">ProSquash </a></li>
                     <li [class.active]="isRouteActive('clubs')" role="presentation"><a routerLink="clubs">Clubs </a></li>
-                    <li [class.active]="isRouteActive('people')" role="presentation"><a routerLink="people">People </a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">People<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li [class.active]="isRouteActive('coaches')" role="presentation"><a routerLink="coaches">Coaches</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li [class.active]="isRouteActive('players')" role="presentation"><a routerLink="players">Players</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li [class.active]="isRouteActive('myaccount')" role="presentation"><a routerLink="myaccount">My Account</a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
                 <p class="navbar-text navbar-right actions">
                     <a class="navbar-link login" data-toggle="modal" data-target="#loginModal">Log In</a>

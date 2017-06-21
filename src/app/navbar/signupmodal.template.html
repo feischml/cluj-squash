@@ -2,28 +2,53 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="myModalLabel">Sign up</h4>
             </div>
             <div class="modal-body">
-                    <form>
+                    <form [formGroup]="form" (ngSubmit)="register()">
                         <div class='form-group'>
-                            <label for="name">Full Name</label>
-                            <input type="text" class="form-control" id="name">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" class="form-control" id="fullname"
+                            [(ngModel)]="user.fullname" name="fullname" #fullname formControlName="fullname">
+                        </div>
+                        <div class='form-group'>
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email">
+                            <input type="text" class="form-control" id="email"
+                            [(ngModel)]="user.email" name="email" #email formControlName="email">
+                        </div>
+                        <div class='form-group'>
                             <label for="birthdate">Birthdate</label>
-                            <input type="date" class="form-control" id="birthdate">
+                            <input type="Date" class="form-control" id="birthdate"
+                            [(ngModel)]="user.birthdate" name="birthdate" #birthdate formControlName="birthdate">
+                        </div>
+                        <div class='form-group'>
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username"
+                            [(ngModel)]="user.username" name="username" #username formControlName="username">
+                        </div>
+                        <div class='form-group'>
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password"
+                            [(ngModel)]="user.password" name="password" #password formControlName="password">
+                        </div>
+                        <div class='form-group'>
                             <label for="repassword">Repeat Password</label>
                             <input type="password" class="form-control" id="repassword">
                         </div>
+                        <div class='form-group'>
+                            <label for="phone">Phone</label>
+                            <input type="phone" class="form-control" id="phone"
+                            [(ngModel)]="user.phone" name="phone" #phone formControlName="phone">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" (click)="cancel()" class="btn btn-default" data-dismiss="modal">Cancel Sign up
+                            </button>
+                            <button type="button" class="btn btn-primary" (click)="register()" data-dismiss="modal">Sign up</button>
+                        </div>
                     </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Sign up</button>
             </div>
         </div>
     </div>

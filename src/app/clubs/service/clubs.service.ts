@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
 import { Club } from '../model/club.model';
-import { Headers } from '@angular/http';
 
 @Injectable()
 export class ClubsService{
