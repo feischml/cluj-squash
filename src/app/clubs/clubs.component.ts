@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClubsService } from './service/clubs.service';
-import 'rxjs/add/operator/switchMap';
 
 @Component({
     templateUrl: './clubs.template.html',

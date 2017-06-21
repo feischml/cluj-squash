@@ -7,12 +7,19 @@ import { Club } from '../model/club.model';
 @Injectable()
 export class ClubsService{
     
-    constructor( private _http: Http ){ }
+    // Application Constants
+    private appConstants;
+
+    constructor( private _http: Http ){
+        this.appConstants = new AppConstants();
+     }
 
     // Return the list of Clubs from the server
     getClubs(){
         var route = '/clubs/clubs';
-        return this._http.get(new AppConstants().getServerUrl() + route).
+        return this._http.get(
+                this.appConstants.getServerUrl() + route,
+                { headers: this.appConstants.getHeaders() }).
             map( clubs => clubs.json());
     }
 
@@ -23,7 +30,9 @@ export class ClubsService{
             route = '/clubs/clubname/' + name;
         if (id)
             route = '/clubs/clubid/' + id;
-        return this._http.get(new AppConstants().getServerUrl() + route).
+        return this._http.get(
+                this.appConstants.getServerUrl() + route,
+                { headers: this.appConstants.getHeaders() }).
             map( club => club.json());        
     }
 
@@ -33,19 +42,19 @@ export class ClubsService{
         if (!club._id){
             route = '/clubs/create';
 
-            console.log(new AppConstants().getServerUrl() + route + "   " + JSON.stringify(club));
+            console.log(this.appConstants.getServerUrl() + route + "   " + JSON.stringify(club));
 
             return this._http.post(
-                    new AppConstants().getServerUrl() + route, 
+                    this.appConstants.getServerUrl() + route, 
                     JSON.stringify(club),
-                    { headers: new AppConstants().getHeaders() },
+                    { headers: this.appConstants.getHeaders() }
                 ).map(res => res.json());
         } else {
             route = '/clubs/update';  
             return this._http.put(
-                    new AppConstants().getServerUrl() + route, 
+                    this.appConstants.getServerUrl() + route, 
                     JSON.stringify(club),
-                    { headers: new AppConstants().getHeaders() }
+                    { headers: this.appConstants.getHeaders() }
                 ).map(res => res.json());
         }
     }

@@ -10,6 +10,8 @@ import { Club } from './model/club.model';
 })
 export class ClubsFormComponent implements OnInit{ 
 
+    componentTitle = "Club Details";
+
     form: FormGroup;
 
     // The actual club edited in the form
