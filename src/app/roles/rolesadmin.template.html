@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>{{ componentTitle }}</h1>
+
+    <p>
+        <a routerLink="/roles/create" class="btn btn-primary">Add Role</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let role of roles">
+                <td>{{ role.roletype }}</td>
+                <td>{{ role.name }}</td>
+                <td>{{ role.description }}</td>
+                <td>
+                    <a [routerLink]="['/roles/roleid', role._id]">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubsService } from './service/clubs.service';
 import { Router, ActivatedRoute} from '@angular/router';
-import { FormBuilder, FormGroup }    from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Club } from './model/club.model';
 
 @Component({

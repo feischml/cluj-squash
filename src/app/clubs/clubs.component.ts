@@ -26,8 +26,7 @@ export class ClubsComponent implements OnInit{
             function(err){
                 console.log(err);
             }
-        );
-        
+        );   
     }
 
 }

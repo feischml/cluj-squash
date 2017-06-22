@@ -4,8 +4,10 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { ClubsFormComponent } from './clubs/clubsform.component';
 import { EventsComponent } from './events/events.component';
 import { MyAccountComponent } from './people/myaccount.component';
-import { AccountsComponent } from './people/accounts.component';
+import { AccountsAdminComponent } from './people/accountsadmin.component';
 import { AccountFormComponent } from './people/accountform.component';
+import { RolesAdminComponent } from './roles/rolesadmin.component';
+import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
 import { CoachesComponent } from './people/coaches.component';
 import { PlayersComponent } from './people/players.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
@@ -20,8 +22,11 @@ export const routing = RouterModule.forRoot([
     { path: 'coaches', component: CoachesComponent },
     { path: 'players', component: PlayersComponent },
     { path: 'myaccount', component: MyAccountComponent },
-    { path: 'accounts', component: AccountsComponent},
+    { path: 'accounts', component: AccountsAdminComponent},
     { path: 'accounts/userid/:id', component: AccountFormComponent},
+    { path: 'roles', component: RolesAdminComponent},
+    { path: 'roles/roleid/:id', component: RolesFormAdminComponent},
+    { path: 'roles/create', component: RolesFormAdminComponent},
     { path: 'prosquash', component: ProsquashComponent },
     { path: '**', component: HomeComponent }
 ]);

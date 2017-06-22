@@ -56,6 +56,14 @@ export class AccountFormComponent implements OnInit{
 
     // Save
     save(){
-
+        this._userService.updateUser(this.user).subscribe(
+            user => {
+                this.user = user;
+                this._router.navigate(['accounts']);
+            },
+            err => { 
+                console.log(err)
+            }
+        );
     }
 }

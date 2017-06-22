@@ -14,7 +14,9 @@ import { EventsComponent } from './events/events.component';
 import { MyAccountComponent } from './people/myaccount.component';
 import { CoachesComponent } from './people/coaches.component';
 import { PlayersComponent } from './people/players.component';
-import { AccountsComponent } from './people/accounts.component';
+import { AccountsAdminComponent } from './people/accountsadmin.component';
+import { RolesAdminComponent} from './roles/rolesadmin.component';
+import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
 import { AccountFormComponent } from './people/accountform.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
 import { FooterComponent } from './footer/footer.component';
@@ -32,7 +34,9 @@ import { NavbarModules } from './navbar/navbar.module';
     HomeComponent,
     EventsComponent,
     MyAccountComponent,
-    AccountsComponent,
+    AccountsAdminComponent,
+    RolesAdminComponent,
+    RolesFormAdminComponent,
     AccountFormComponent,
     CoachesComponent,
     PlayersComponent,

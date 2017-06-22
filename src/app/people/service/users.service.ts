@@ -42,4 +42,14 @@ export class UsersService{
             map( user => user.json());  
     }
 
+    // Update a User Account
+    updateUser(user: User){
+        var  route = '/users/update';  
+        return this._http.put(
+            this.appConstants.getServerUrl() + route, 
+            JSON.stringify(user),
+            { headers: this.appConstants.getHeaders() }
+        ).map(res => res.json());
+    }
+
 }

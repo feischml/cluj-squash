@@ -3,10 +3,10 @@ import { User} from './model/users.model';
 import { UsersService} from './service/users.service';
 
 @Component({
-    templateUrl: './accounts.template.html',
+    templateUrl: './accountsadmin.template.html',
     providers: [UsersService]
 })
-export class AccountsComponent implements OnInit{
+export class AccountsAdminComponent implements OnInit{
 
     componentTitle = "Accounts";
 
