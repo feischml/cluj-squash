@@ -17,6 +17,7 @@ export class SignupmodalComponent implements OnInit{
     // User to be created
     user: User;
     roles = [];
+    rePassword: String;
     form: FormGroup;
 
     constructor(private _usersService: UsersService,
@@ -30,10 +31,11 @@ export class SignupmodalComponent implements OnInit{
             username: [],
             email: [],
             password: [],
+            repassword: [],
             phone: [],
-            admin: [],
             fullname: [],
-            birthdate: []
+            birthdate: [],
+            roles: []
         });
     }
 
@@ -43,8 +45,8 @@ export class SignupmodalComponent implements OnInit{
             roles => {
                 for (let i = 0; i < roles.length; i++)
                     if (roles[i].admin == false){
-                        this.roles.push(roles[i]);
-                    }
+                        this.roles.push({ id: roles[i]._id, name:roles[i].name, selected: false});
+                    }   
             },
             err => { console.log(err)}
         );
@@ -52,7 +54,11 @@ export class SignupmodalComponent implements OnInit{
 
     // Handle Sign-Up button press
     register(){
-        console.log('roleids: ' + this.user.roleIds);
+        // Sety the selected Roles for the registering User
+        this.roles.forEach(element => {
+            if(element.selected == true)
+                this.user.roleIds.push(element['id']);
+        }); 
         this._usersService.registerUser(this.user).subscribe(
                 res => {
                     alert("Registration successfull!");
@@ -60,13 +66,16 @@ export class SignupmodalComponent implements OnInit{
                 err => {
                     console.log(err);
                     alert("Registration unsuccessfull, please try again!")
-                    this.user = new User();
+                    // clear all fields
+                    this.cancel();
                 });
     }
 
     // Handle Cancel button press
     cancel(){
+        // Reset the values in the fields
         this.user = new User();
+        this.form.reset();
     }
 
 }

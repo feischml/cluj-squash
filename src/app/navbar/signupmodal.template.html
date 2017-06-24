@@ -36,7 +36,8 @@
                         </div>
                         <div class='form-group'>
                             <label for="repassword">Repeat Password</label>
-                            <input type="password" class="form-control" id="repassword">
+                            <input type="password" id="repassword" formControlName="repassword" #repassword
+                            [(ngModel)]="rePassword" class="form-control">
                         </div>
                         <div class='form-group'>
                             <label for="phone">Phone</label>
@@ -46,7 +47,8 @@
 
                         <div class='form-group' *ngFor="let role of roles">
                             <label class="checkbox-inline">
-                                <input type="checkbox" ng-change="checkChanges()" value="{{ role._id }}">{{ role.name }}
+                                <input type="checkbox" value="{{ role._id }}" [(ngModel)]="role.selected"
+                                formControlName="roles">{{ role.name }}
                             </label>
                         </div>
 

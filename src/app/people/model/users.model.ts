@@ -4,9 +4,18 @@ export class User{
     username: String;
     password: String;
     phone: String;
-    admin: Boolean;
     fullname: String;
     birthdate: Date;
-    roleIds: [String];
+    roleIds: String[];
     // ToDo PhotoId
+
+    constructor(){
+        this._id = "";
+        this.email = "";
+        this.username = "";
+        this.password = "";
+        this.phone = "";
+        this.fullname = "";
+        this.roleIds = [];
+    }
 }

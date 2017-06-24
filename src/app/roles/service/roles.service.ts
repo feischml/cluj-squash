@@ -37,9 +37,6 @@ export class RolesService{
         var route;
         if (!role._id){
             route = '/roles/create';
-
-            console.log(this.appConstants.getServerUrl() + route + "   " + JSON.stringify(role));
-
             return this._http.post(
                     this.appConstants.getServerUrl() + route, 
                     JSON.stringify(role),

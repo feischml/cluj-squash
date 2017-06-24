@@ -17,7 +17,9 @@ export class AccountsAdminComponent implements OnInit{
 
     ngOnInit(){
         this._userService.getAllUsers().subscribe(
-            users => { this.users = users},
+            users => { 
+                this.users = users
+            },
             err => {
                 console.log(err);
             }
