@@ -17,7 +17,6 @@ export class RolesAdminComponent implements OnInit{
     ngOnInit(){
         this._rolesService.getRoles().subscribe(
             roles => { 
-                console.log(roles);
                 this.roles = roles;  
             }, 
             function(err){

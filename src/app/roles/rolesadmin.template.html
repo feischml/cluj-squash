@@ -10,6 +10,7 @@
                 <th>Type</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Admin specific role</th>
                 <th>Edit</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td>{{ role.roletype }}</td>
                 <td>{{ role.name }}</td>
                 <td>{{ role.description }}</td>
+                <td>{{ role.admin }}</td>
                 <td>
                     <a [routerLink]="['/roles/roleid', role._id]">
 						<i class="glyphicon glyphicon-edit"></i>

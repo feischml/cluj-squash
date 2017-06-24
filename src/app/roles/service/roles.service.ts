@@ -20,7 +20,7 @@ export class RolesService{
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() }).
-            map( roles => roles.json());
+            map(roles => roles.json());
     }
 
     // Return a role with a given id

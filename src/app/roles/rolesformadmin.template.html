@@ -20,6 +20,12 @@
                     <input [(ngModel)]="role.description" #description formControlName="description" type="text" class="form-control">
                 </div>
 
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="role.admin" #admin formControlName="admin"  value="">Admin role
+                    </label>
+                </div>
+                
             </fieldset>
             <button type="submit" class="btn btn-primary">
                 Save Changes

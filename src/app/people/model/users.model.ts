@@ -7,5 +7,6 @@ export class User{
     admin: Boolean;
     fullname: String;
     birthdate: Date;
+    roleIds: [String];
     // ToDo PhotoId
 }

@@ -26,7 +26,8 @@ export class RolesFormAdminComponent implements OnInit{
         this.form = fb.group({
             roletype: [],
             description: [],
-            name: []
+            name: [],
+            admin: []
         });
     }
 
