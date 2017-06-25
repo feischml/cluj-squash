@@ -11,6 +11,7 @@ import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
 import { CoachesComponent } from './people/coaches.component';
 import { CoachesDetailComponent } from './people/coachesdetail.component';
 import { PlayersComponent } from './people/players.component';
+import { PlayersDetailComponent } from './people/playersdetail.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
 
 export const routing = RouterModule.forRoot([
@@ -23,6 +24,7 @@ export const routing = RouterModule.forRoot([
     { path: 'coaches', component: CoachesComponent },
     { path: 'coaches/coachid/:id', component: CoachesDetailComponent },
     { path: 'players', component: PlayersComponent },
+    { path: 'players/playerid/:id', component: PlayersDetailComponent },
     { path: 'myaccount', component: MyAccountComponent },
     { path: 'accounts', component: AccountsAdminComponent},
     { path: 'accounts/userid/:id', component: AccountFormComponent},

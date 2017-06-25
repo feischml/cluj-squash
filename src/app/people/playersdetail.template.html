@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>{{ playerUser.user.fullname }}</h1>
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="row profile-row">
+                <div class="col-md-3 center">
+                    <img class="media-object thumbnail" src="http://lorempixel.com/250/300/people/?random">
+                </div>
+                <div class="col-md-8">
+					<div class='form-group'>
+						<label for="email">Email</label>
+						<input readonly type="text" class="form-control" id="email" [(ngModel)]="playerUser.user.email" name="email" #email formControlName="email">
+					</div>
+					<div class='form-group'>
+						<label for="birthdate">Birthdate</label>
+						<input readonly type="date" class="form-control" id="birthdate" [(ngModel)]="playerUser.user.birthdate" name="birthdate" #birthdate formControlName="birthdate">
+					</div>
+					<div class='form-group'>
+						<label for="phone">Phone</label>
+						<input readonly type="phone" class="form-control" id="phone" [(ngModel)]="playerUser.user.phone" name="phone" #phone formControlName="phone">
+					</div>
+                    <div class='form-group'>
+						<label for="bestlocalranking">Best local ranking</label>
+						<input type="text" class="form-control" id="bestlocalranking" 
+                            [(ngModel)]="playerUser.player.bestlocalranking" 
+                            name="bestlocalranking" #bestlocalranking formControlName="bestlocalranking">
+					</div>
+                    <div class='form-group'>
+						<label for="bestnationalranking">Best national ranking</label>
+						<input type="bestnationalranking" class="form-control" id="bestnationalranking" 
+                            [(ngModel)]="playerUser.player.bestnationalranking" name="bestnationalranking" 
+                            #bestnationalranking formControlName="bestnationalranking">
+					</div>
+
+                    <div class='form-group'>
+						<label for="bestnationalrankingdate">Date of best national ranking</label>
+						<input type="bestnationalrankingdate" class="form-control" id="bestnationalrankingdate" 
+                            [(ngModel)]="playerUser.player.bestnationalrankingdate" name="bestnationalrankingdate" 
+                            #bestnationalranking formControlName="bestnationalrankingdate">
+					</div>
+
+                    <div class='form-group'>
+						<label for="achieventdescription">Best achievements</label>
+						<textarea type="achieventdescription" class="form-control" id="achieventdescription" 
+                            [(ngModel)]="playerUser.player.achieventdescription" name="achieventdescription" 
+                            #bestnationalranking formControlName="achieventdescription">
+						</textarea>
+					</div>
+
+                    <button type="submit" class="btn btn-primary">
+                		Save Changes
+        			</button>
+                </div>
+            </div>
+        </form>
+</div>
