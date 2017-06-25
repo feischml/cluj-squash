@@ -36,7 +36,7 @@ export class CoachesDetailComponent implements OnInit{
 
     }
 
-    // Load the Coacn with the User details
+    // Load the Coach with the User details
     ngOnInit(){
         this._route.params.subscribe(params => {
             var id = params["id"];
