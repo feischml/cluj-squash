@@ -9,6 +9,7 @@
                 <th>Phone</th>
 				<th>Username</th>
                 <th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,6 +22,11 @@
 				<td>
 					<a [routerLink]="['/accounts/userid', user._id]">
 						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+				</td>
+				<td>
+					<a>
+						<i (click)="deleteUser(user)" class="glyphicon glyphicon-remove"></i>
 					</a>
 				</td>
 			</tr>

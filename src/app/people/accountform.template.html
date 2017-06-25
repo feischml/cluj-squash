@@ -24,6 +24,14 @@
 						<label for="phone">Phone</label>
 						<input type="phone" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone" #phone formControlName="phone">
 					</div>
+
+					<div class='form-group' *ngFor="let role of roles">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="{{ role.id }}" [(ngModel)]="role.selected"
+                                formControlName="roles">{{ role.name }}
+                        </label>
+                    </div>
+
 					<button type="submit" class="btn btn-primary">
                 		Save Changes
         			</button>

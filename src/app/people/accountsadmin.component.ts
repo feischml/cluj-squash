@@ -25,4 +25,17 @@ export class AccountsAdminComponent implements OnInit{
             }
         );
     }
+
+    // On click Delete
+    deleteUser(user){
+        this._userService.deleteUser(user).subscribe(
+            res => { 
+                let index = this.users.indexOf(res)
+                this.users.splice(index,1);
+            },
+            err => {
+                console.log(err);
+            }
+        );
+    }
 }

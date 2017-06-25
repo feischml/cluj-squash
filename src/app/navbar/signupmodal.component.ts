@@ -54,7 +54,7 @@ export class SignupmodalComponent implements OnInit{
 
     // Handle Sign-Up button press
     register(){
-        // Sety the selected Roles for the registering User
+        // Set the selected Roles for the registering User
         this.roles.forEach(element => {
             if(element.selected == true)
                 this.user.roleIds.push(element['id']);

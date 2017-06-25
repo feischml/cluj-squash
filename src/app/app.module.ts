@@ -13,6 +13,7 @@ import { ClubsFormComponent } from  './clubs/clubsform.component';
 import { EventsComponent } from './events/events.component';
 import { MyAccountComponent } from './people/myaccount.component';
 import { CoachesComponent } from './people/coaches.component';
+import { CoachesDetailComponent } from './people/coachesdetail.component';
 import { PlayersComponent } from './people/players.component';
 import { AccountsAdminComponent } from './people/accountsadmin.component';
 import { RolesAdminComponent} from './roles/rolesadmin.component';
@@ -39,6 +40,7 @@ import { NavbarModules } from './navbar/navbar.module';
     RolesFormAdminComponent,
     AccountFormComponent,
     CoachesComponent,
+    CoachesDetailComponent,
     PlayersComponent,
     ProsquashComponent,
     ClubsComponent,

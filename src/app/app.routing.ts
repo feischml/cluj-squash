@@ -9,6 +9,7 @@ import { AccountFormComponent } from './people/accountform.component';
 import { RolesAdminComponent } from './roles/rolesadmin.component';
 import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
 import { CoachesComponent } from './people/coaches.component';
+import { CoachesDetailComponent } from './people/coachesdetail.component';
 import { PlayersComponent } from './people/players.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
 
@@ -20,6 +21,7 @@ export const routing = RouterModule.forRoot([
     { path: 'clubs/clubid/:id', component: ClubsFormComponent },
     { path: 'events', component: EventsComponent },
     { path: 'coaches', component: CoachesComponent },
+    { path: 'coaches/coachid/:id', component: CoachesDetailComponent },
     { path: 'players', component: PlayersComponent },
     { path: 'myaccount', component: MyAccountComponent },
     { path: 'accounts', component: AccountsAdminComponent},

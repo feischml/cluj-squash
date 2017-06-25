@@ -52,4 +52,14 @@ export class UsersService{
         ).map(res => res.json());
     }
 
+    // Delete a User by Id
+    deleteUser(user){
+        var route = '/users/delete/';
+
+        return this._http.delete(
+            this.appConstants.getServerUrl() + route + user["_id"],
+            { headers: this.appConstants.getHeaders() }
+        ).map(res => res.json());
+    }
+
 }
