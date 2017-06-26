@@ -13,6 +13,9 @@ import { CoachesDetailComponent } from './people/coachesdetail.component';
 import { PlayersComponent } from './people/players.component';
 import { PlayersDetailComponent } from './people/playersdetail.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
+import { AssociationComponent } from './associations/association.component';
+import { AssociationFormComponent } from './associations/associationform.component';
+
 
 export const routing = RouterModule.forRoot([
     { path: 'home', component: HomeComponent },
@@ -32,5 +35,7 @@ export const routing = RouterModule.forRoot([
     { path: 'roles/roleid/:id', component: RolesFormAdminComponent},
     { path: 'roles/create', component: RolesFormAdminComponent},
     { path: 'prosquash', component: ProsquashComponent },
+    { path: 'associations', component: AssociationComponent},
+    { path: 'associations/associationid/:id', component: AssociationFormComponent},
     { path: '**', component: HomeComponent }
 ]);

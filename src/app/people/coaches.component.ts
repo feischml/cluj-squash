@@ -3,7 +3,6 @@ import { CoachesService } from './service/coaches.service';
 
 @Component({
     templateUrl: './coaches.template.html',
-    styleUrls: ['./styles/coaches.component.css'],
     providers: [CoachesService]
 })
 export class CoachesComponent implements OnInit{

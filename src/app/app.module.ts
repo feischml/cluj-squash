@@ -23,6 +23,8 @@ import { AccountFormComponent } from './people/accountform.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AssociationComponent } from './associations/association.component';
+import { AssociationFormComponent } from './associations/associationform.component';
 
 // import routing
 import { routing } from './app.routing';
@@ -48,7 +50,9 @@ import { NavbarModules } from './navbar/navbar.module';
     ClubsComponent,
     ClubsFormComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    AssociationComponent,
+    AssociationFormComponent
   ],
   imports: [
     NavbarModules,

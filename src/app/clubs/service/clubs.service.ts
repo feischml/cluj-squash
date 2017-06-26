@@ -12,7 +12,7 @@ export class ClubsService{
 
     constructor( private _http: Http ){
         this.appConstants = new AppConstants();
-     }
+    }
 
     // Return the list of Clubs from the server
     getClubs(){
@@ -41,9 +41,6 @@ export class ClubsService{
         var route;
         if (!club._id){
             route = '/clubs/create';
-
-            console.log(this.appConstants.getServerUrl() + route + "   " + JSON.stringify(club));
-
             return this._http.post(
                     this.appConstants.getServerUrl() + route, 
                     JSON.stringify(club),
