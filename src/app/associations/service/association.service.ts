@@ -54,7 +54,7 @@ export class AssociationService{
 
     // Delete Association
     deleteAssociation(association: Association){
-        var route = '/assotiations/';
+        var route = '/associations/delete/';
         if (association._id){
             route = route + association._id;
             return this._http.delete(

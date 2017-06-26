@@ -37,5 +37,6 @@ export const routing = RouterModule.forRoot([
     { path: 'prosquash', component: ProsquashComponent },
     { path: 'associations', component: AssociationComponent},
     { path: 'associations/associationid/:id', component: AssociationFormComponent},
+    { path: 'associations/create', component: AssociationFormComponent},
     { path: '**', component: HomeComponent }
 ]);

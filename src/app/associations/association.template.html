@@ -15,12 +15,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let assotiations of association">
+            <tr *ngFor="let association of associations">
                 <td>{{ association.name }}</td>
                 <td>{{ association.webpage }}</td>
                 <td>{{ association.description }}</td>
                 <td>
-                    <a [routerLink]="['/associations/associationid', associatio ._id]">
+                    <a [routerLink]="['/associations/associationid', association._id]">
 						<i class="glyphicon glyphicon-edit"></i>
 					</a>
                 </td>
