@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
-
-import { LoginmodalComponent } from './loginmodal.component';
-import { SignupmodalComponent } from './signupmodal.component';
-
+import { RouterModule } from '@angular/router';
+// Components
+import { ClubsComponent } from '../clubs.component';
+import { ClubsFormComponent} from '../clubsform.component';
 
 @NgModule({
     imports: [
+        RouterModule,
         FormsModule,
         CommonModule,
         HttpModule,
         ReactiveFormsModule 
     ],
     declarations: [
-        LoginmodalComponent,
-        SignupmodalComponent,
+        ClubsComponent,
+        ClubsFormComponent,
     ],
     exports: [
-        LoginmodalComponent,
-        SignupmodalComponent
+        ClubsComponent,
+        ClubsFormComponent
     ]
-
 })
-export class NavbarModules{ }
+export class ClubModules{ }

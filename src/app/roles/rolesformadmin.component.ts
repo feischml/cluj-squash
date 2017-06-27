@@ -14,14 +14,12 @@ export class RolesFormAdminComponent implements OnInit{
 
     // Role that will be created or updated
     role = new Role();
-
     form: FormGroup;
 
     constructor(private _rolesService: RolesService,
                 private _route: ActivatedRoute,
                 private _router: Router,
                 fb: FormBuilder){
-
         // Build the form
         this.form = fb.group({
             roletype: [],
@@ -60,5 +58,4 @@ export class RolesFormAdminComponent implements OnInit{
             console.log(err);
         });
     }
-
 }

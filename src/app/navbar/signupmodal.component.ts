@@ -60,15 +60,16 @@ export class SignupmodalComponent implements OnInit{
                 this.user.roleIds.push(element['id']);
         }); 
         this._usersService.registerUser(this.user).subscribe(
-                res => {
-                    alert("Registration successfull!");
-                },
-                err => {
-                    console.log(err);
-                    alert("Registration unsuccessfull, please try again!")
-                    // clear all fields
-                    this.cancel();
-                });
+            res => {
+                alert("Registration successfull!");
+            },
+            err => {
+                console.log(err);
+                alert("Registration unsuccessfull, please try again!")
+                // clear all fields
+                this.cancel();
+            }
+        );
     }
 
     // Handle Cancel button press

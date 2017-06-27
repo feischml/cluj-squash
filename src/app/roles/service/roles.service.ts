@@ -12,7 +12,7 @@ export class RolesService{
 
     constructor( private _http: Http ){
         this.appConstants = new AppConstants();
-     }
+    }
 
      // Return the list of Roles from the server
     getRoles(){

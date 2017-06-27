@@ -11,9 +11,7 @@ import { Club } from './model/club.model';
 export class ClubsFormComponent implements OnInit{ 
 
     componentTitle = "Club Details";
-
     form: FormGroup;
-
     // The actual club edited in the form
     club = new Club();
 
@@ -21,7 +19,6 @@ export class ClubsFormComponent implements OnInit{
                 private _clubsService: ClubsService,
                 private _route: ActivatedRoute,
                 private _router: Router){
-    
     // Build the form
         this.form = fb.group({
             clubname: [],

@@ -7,54 +7,36 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 // main pages
-import { HomeComponent } from './home/home.component';
-import { ClubsComponent } from './clubs/clubs.component';
-import { ClubsFormComponent } from  './clubs/clubsform.component';
-import { EventsComponent } from './events/events.component';
-import { MyAccountComponent } from './people/myaccount.component';
-import { CoachesComponent } from './people/coaches.component';
-import { CoachesDetailComponent } from './people/coachesdetail.component';
-import { PlayersComponent } from './people/players.component';
-import { PlayersDetailComponent } from './people/playersdetail.component';
-import { AccountsAdminComponent } from './people/accountsadmin.component';
-import { RolesAdminComponent} from './roles/rolesadmin.component';
-import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
-import { AccountFormComponent } from './people/accountform.component';
-import { ProsquashComponent } from './prosquash/prosquash.component';
-import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AssociationComponent } from './associations/association.component';
-import { AssociationFormComponent } from './associations/associationform.component';
 
 // import routing
 import { routing } from './app.routing';
 
 // import modules
-import { NavbarModules } from './navbar/navbar.module';
+import { NavbarModules } from './navbar/module/navbar.module';
+import { AssociationModules } from './associations/module/association.module';
+import { ClubModules } from './clubs/module/club.module';
+import { EventModules } from './events/module/events.module';
+import { HomeModules } from './home/module/home.module';
+import { FooterModules } from './footer/module/footer.module';
+import { PeopleModules } from './people/module/people.module';
+import { RolesModules } from './roles/module/roles.module';
+import { ProsquashModules } from './prosquash/module/prosquash.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    EventsComponent,
-    MyAccountComponent,
-    AccountsAdminComponent,
-    RolesAdminComponent,
-    RolesFormAdminComponent,
-    AccountFormComponent,
-    CoachesComponent,
-    CoachesDetailComponent,
-    PlayersComponent,
-    PlayersDetailComponent,
-    ProsquashComponent,
-    ClubsComponent,
-    ClubsFormComponent,
-    FooterComponent,
-    NavbarComponent,
-    AssociationComponent,
-    AssociationFormComponent
+    NavbarComponent
   ],
   imports: [
+    AssociationModules,
+    RolesModules,
+    PeopleModules,
+    ProsquashModules,
+    HomeModules,
+    FooterModules,
+    EventModules,
+    ClubModules,
     NavbarModules,
     BrowserModule,
     FormsModule,
