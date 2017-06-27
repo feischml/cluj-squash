@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 // Components
 import { LoginmodalComponent } from '../loginmodal.component';
 import { SignupmodalComponent } from '../signupmodal.component';
+// Provider
+import { LclStorageService } from '../../lclstorage/lclstorage.service';
 
 @NgModule({
     imports: [
@@ -20,6 +22,7 @@ import { SignupmodalComponent } from '../signupmodal.component';
     exports: [
         LoginmodalComponent,
         SignupmodalComponent
-    ]
+    ], 
+    providers: [LclStorageService]
 })
 export class NavbarModules{ }
