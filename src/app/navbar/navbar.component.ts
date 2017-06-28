@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LclStorageService } from '../lclstorage/lclstorage.service';
 import { AppConstants} from '../app.constants';
 import { AuthService } from '../people/service/auth.service';
+import { User } from '../people/model/users.model';
 
 @Component({
     selector: 'navbar',
@@ -11,15 +12,17 @@ import { AuthService } from '../people/service/auth.service';
 })
 export class NavbarComponent {
 
-    loggedUser;
-    lclStorage: LclStorageService;
+    // Logged User saved in localStorage
+    loggedUser: User;
+    private lclStorage: LclStorageService;
     private appConstants: AppConstants;
 
     constructor(private _router: Router,
                 private _authService: AuthService) {
         this.appConstants = new AppConstants();
         this.lclStorage = new LclStorageService();
-        this.loggedUser = this.lclStorage.getItem(AppConstants.LOGGED_USER);
+        // Transform String into Object User
+        this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
     }
 
     // Check if router is active -> if yes, set the active property of the current navbar component
@@ -32,8 +35,8 @@ export class NavbarComponent {
         this._authService.logoutUser().subscribe(
             res => { 
                 alert(res['_body']);
-                // Delete logged user
-                this.loggedUser = null;
+                // Refresh logged user => this should be null
+                this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
             });
     }
 
