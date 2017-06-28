@@ -4,14 +4,11 @@ export class AppConstants{
     
     private serverUrl: String;
     private headers = new Headers();
-    private lclstorage = {
-        CURR_USER: ""
-    };
+    public static LOGGED_USER = "LOGGED_USER";
     
     constructor(){
         this.serverUrl = "http://localhost:3000";
         this.headers.append('Content-Type', 'application/json');
-        this.lclstorage.CURR_USER = "CURR_USER";
     }
 
     // Get Headers for requests
@@ -22,10 +19,6 @@ export class AppConstants{
     // Get the server URL
     getServerUrl(): String{
         return this.serverUrl;
-    }
-
-    getLclStorage(): Object{
-        return this.lclstorage;
     }
 
 }
