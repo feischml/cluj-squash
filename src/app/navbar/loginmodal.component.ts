@@ -14,6 +14,7 @@ export class LoginmodalComponent{
     user: User;
     // Emit event when User is logged in
     @Output() on_user_has_logged_in : EventEmitter<any> = new EventEmitter();
+    @Output() on_admin_has_logged_in : EventEmitter<any> = new EventEmitter();
 
     constructor(private _authService: AuthService,
                 fb: FormBuilder){
@@ -37,6 +38,9 @@ export class LoginmodalComponent{
                     this.user.password = password;
                     // Propagate to parent the fact that we are logged in
                     this.on_user_has_logged_in.emit(this.user);
+                    //TODO +++++++++++++++++++++++++++++++++++++++++++++++
+                    // check if user is admin
+                    this.on_admin_has_logged_in.emit(this.user);
                 }
             },
             err => alert(err['_body'])

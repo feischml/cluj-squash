@@ -3,6 +3,8 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
 import { User } from '../model/users.model';
+import { Role } from '../../roles/model/roles.model';
+import { RolesService } from '../../roles/service/roles.service';
 
 @Injectable()
 export class UsersService{
@@ -10,7 +12,8 @@ export class UsersService{
     // Application Constants
     private appConstants;
 
-    constructor(private _http: Http){ 
+    constructor(private _http: Http,
+                private _rolesService: RolesService){ 
         this.appConstants = new AppConstants();
     }
 

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { User} from './model/users.model';
 import { UsersService} from './service/users.service';
+import { RolesService } from '../roles/service/roles.service';
 
 @Component({
     templateUrl: './accountsadmin.template.html',
-    providers: [UsersService]
+    providers: [UsersService, RolesService]
 })
 export class AccountsAdminComponent implements OnInit{
 
@@ -16,6 +17,7 @@ export class AccountsAdminComponent implements OnInit{
     constructor(private _userService: UsersService){ }
 
     ngOnInit(){
+        console.log("hello");
         this._userService.getAllUsers().subscribe(
             users => { 
                 this.users = users

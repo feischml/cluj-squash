@@ -14,6 +14,7 @@ export class NavbarComponent {
 
     // Logged User saved in localStorage
     loggedUser: User;
+    loggedUserIsAdmin: boolean;
     private lclStorage: LclStorageService;
     private appConstants: AppConstants;
 
@@ -23,6 +24,7 @@ export class NavbarComponent {
         this.lclStorage = new LclStorageService();
         // Transform String into Object User
         this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
+        this.loggedUserIsAdmin = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_ADMIN));
     }
 
     // Check if router is active -> if yes, set the active property of the current navbar component
@@ -37,6 +39,7 @@ export class NavbarComponent {
                 alert(res['_body']);
                 // Refresh logged user => this should be null
                 this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
+                this.loggedUserIsAdmin = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_ADMIN));
             });
     }
 

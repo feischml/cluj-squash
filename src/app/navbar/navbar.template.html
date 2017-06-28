@@ -25,7 +25,7 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
+                    <li *ngIf="loggedUserIsAdmin" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li [class.active]="isRouteActive('accounts')" role="presentation"><a routerLink="accounts">Manage Accounts</a></li>
@@ -54,7 +54,7 @@
 </div>
 
 <!-- Log In Modal -->
-<loginmodal (on_user_has_logged_in)="loggedUser=$event"></loginmodal>
+<loginmodal (on_user_has_logged_in)="loggedUser=$event" (on_admin_has_logged_in)="loggedUserIsAdmin=$event"></loginmodal>
 
 <!-- Sign Up Modal -->
 <signupmodal></signupmodal>
