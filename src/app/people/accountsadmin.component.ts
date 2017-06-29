@@ -17,7 +17,6 @@ export class AccountsAdminComponent implements OnInit{
     constructor(private _userService: UsersService){ }
 
     ngOnInit(){
-        console.log("hello");
         this._userService.getAllUsers().subscribe(
             users => { 
                 this.users = users

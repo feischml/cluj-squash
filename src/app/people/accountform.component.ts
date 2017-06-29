@@ -49,7 +49,6 @@ export class AccountFormComponent implements OnInit{
                 this._userService.getUserById(id).subscribe(
                     user => {
                         this.user = user;
-
                         // Load also roles
                         this._rolesService.getRoles().subscribe(
                             roles => {

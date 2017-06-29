@@ -34,13 +34,11 @@ export class LoginmodalComponent{
         this._authService.loginUser(username, password).subscribe(
             user => {
                 if (user){ // login successful
-                    this.user = user;
+                    this.user = user['user'];
                     this.user.password = password;
                     // Propagate to parent the fact that we are logged in
                     this.on_user_has_logged_in.emit(this.user);
-                    //TODO +++++++++++++++++++++++++++++++++++++++++++++++
-                    // check if user is admin
-                    this.on_admin_has_logged_in.emit(this.user);
+                    this.on_admin_has_logged_in.emit(user['admin']);
                 }
             },
             err => alert(err['_body'])

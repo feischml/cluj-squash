@@ -31,15 +31,12 @@ export class AuthService{
                     if (loggedUser) 
                         this.lclStorage.setItem(
                             AppConstants.LOGGED_USER,
-                            JSON.stringify(loggedUser)
+                            JSON.stringify(loggedUser['user'])
                         );
-                        // TODO
-                        // check if user is admin if yes:
                         this.lclStorage.setItem(
                             AppConstants.LOGGED_ADMIN,
-                            JSON.stringify(loggedUser)
+                            JSON.stringify(loggedUser['admin'])
                         );
-
                     return loggedUser;
                 });
     }
