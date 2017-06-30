@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
 import { EventsComponent } from '../events.component';
+import { EventsFormComponent } from '../eventsform.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { EventsComponent } from '../events.component';
         ReactiveFormsModule 
     ],
     declarations: [
-        EventsComponent
+        EventsComponent,
+        EventsFormComponent        
     ],
     exports: [
         EventsComponent

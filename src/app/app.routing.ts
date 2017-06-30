@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { ClubsFormComponent } from './clubs/clubsform.component';
 import { EventsComponent } from './events/events.component';
+import { EventsFormComponent } from './events/eventsform.component';
 import { MyAccountComponent } from './people/myaccount.component';
 import { AccountsAdminComponent } from './people/accountsadmin.component';
 import { AccountFormComponent } from './people/accountform.component';
@@ -23,7 +24,6 @@ export const routing = RouterModule.forRoot([
     { path: 'clubs/create', component: ClubsFormComponent },
     { path: 'clubs/clubname/:name', component: ClubsFormComponent },
     { path: 'clubs/clubid/:id', component: ClubsFormComponent },
-    { path: 'events', component: EventsComponent },
     { path: 'coaches', component: CoachesComponent },
     { path: 'coaches/coachid/:id', component: CoachesDetailComponent },
     { path: 'players', component: PlayersComponent },
@@ -38,5 +38,8 @@ export const routing = RouterModule.forRoot([
     { path: 'associations', component: AssociationComponent},
     { path: 'associations/associationid/:id', component: AssociationFormComponent},
     { path: 'associations/create', component: AssociationFormComponent},
+    { path: 'events', component: EventsComponent },
+    { path: 'events/eventid/:id', component: EventsFormComponent },
+    { path: 'events/create', component: EventsFormComponent },
     { path: '**', component: HomeComponent }
 ]);

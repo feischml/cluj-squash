@@ -1,3 +1,44 @@
 <div class="container">
     <h1>{{ componentTitle }}</h1>
-</div>
+
+    <p>
+        <a routerLink="/events/create" class="btn btn-primary">Create Event</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Webpage</th>
+                <th>Date</th>
+                <th>Registration Opened Until Date</th>
+                <th>Location Description</th>
+                <th>Location Webpage</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of events">
+                <td>{{ event.name }}</td>
+                <td>{{ event.webpage }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.eventdate }}</td>
+                <td>{{ event.registeruntildate }}</td>
+                <td>{{ event.locationdescription }}</td>
+                <td>{{ event.locationwebpage }}</td>
+                <td>
+                    <a [routerLink]="['/events/eventid', event._id]">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+                </td>
+                <td>
+					<a>
+						<i (click)="deleteEvent(event)" class="glyphicon glyphicon-remove"></i>
+					</a>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>   

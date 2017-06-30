@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>{{ componentTitle }}</h1>
+    <div class="row">
+    <div class="col-md-6 well">
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <fieldset>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input [(ngModel)]="event.name" name="name" #name formControlName="name" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea [(ngModel)]="event.description" formControlName="description" class="form-control">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Webpage</label>
+                    <input [(ngModel)]="event.webpage" #webpage formControlName="webpage" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Event Date</label>
+                    <input [(ngModel)]="event.eventdate" #eventdate formControlName="eventdate" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Registration Open Until Date</label>
+                    <input [(ngModel)]="event.registeruntildate" #registeruntildate 
+                    formControlName="registeruntildate" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Location Description</label>
+                    <input [(ngModel)]="event.locationdescription" #locationdescription 
+                    formControlName="locationdescription" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Location Webpage</label>
+                    <input [(ngModel)]="event.locationwebpage" #locationwebpage 
+                    formControlName="locationwebpage" type="text" class="form-control">
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">
+                Save Changes
+            </button>
+        </form>
+    </div>
+</div>   

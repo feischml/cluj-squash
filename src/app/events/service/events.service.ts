@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
-import { Association} from '../model/association.model';
+import { Events } from '../model/events.model';
 
 @Injectable()
-export class AssociationService{
+export class EventsService{
 
     // Application Constants
     private appConstants;
@@ -14,55 +14,55 @@ export class AssociationService{
         this.appConstants = new AppConstants();
      }
 
-     // Return the list of Associations from the server
-    getAssociations(){
-        var route = '/associations/associations';
+     // Return the list of Events from the server
+    getEvents(){
+        var route = '/events/events';
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() }).
-            map( associations => associations.json());
+            map( res => res.json());
     }
 
-    // Return an Association with a given id
-    getAssociation(id: String){
-        var route = '/associations/associationid/' + id;
+    // Return an Event with a given id
+    getEvent(id: String){
+        var route = '/events/eventid/' + id;
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() }).
-            map( association => association.json());        
+            map( res => res.json());        
     }
 
-    // Update or create an Association
-    updateCreateAssociation(association: Association){
+    // Update or create an Event
+    updateCreateEvent(event: Events){
         var route;
-        if (!association._id){
-            route = '/associations/create';
+        if (!event._id){
+            route = '/events/create';
             return this._http.post(
                     this.appConstants.getServerUrl() + route, 
-                    JSON.stringify(association),
+                    JSON.stringify(event),
                     { headers: this.appConstants.getHeaders() }
                 ).map(res => res.json());
         } else {
-            route = '/associations/update';  
+            route = '/events/update';  
             return this._http.put(
                     this.appConstants.getServerUrl() + route, 
-                    JSON.stringify(association),
+                    JSON.stringify(event),
                     { headers: this.appConstants.getHeaders() }
                 ).map(res => res.json());
         }
     }
 
-    // Delete Association
-    deleteAssociation(association: Association){
-        var route = '/associations/delete/';
-        if (association._id){
-            route = route + association._id;
+    // Delete Event
+    deleteEvent(event: Events){
+        var route = '/events/delete/';
+        if (event._id){
+            route = route + event._id;
             return this._http.delete(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() }
             ).map( res => res.json());
         } else {
-            alert("Can't delete Association, inconsistent data.");
+            alert("Can't delete Event, inconsistent data.");
         }
     }
 

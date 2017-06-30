@@ -1,19 +1,24 @@
 import { Location } from '../../common/models/location.model';
 
-export class Club{
+export class Events{
+
     _id: String;
-    clubname: String;
+    name: String;
     description: String;
-    phone: String;
     webpage: String;
+    eventdate: Date;
+    registeruntildate: Date;
+    locationdescription: String;
+    locationwebpage: String;
     maplocation: Location;
 
     constructor(){
         this._id = "";
-        this.clubname = "";
+        this.name = "";
         this.description = "";
-        this.phone = "";
         this.webpage = "";
+        this.locationdescription = "";
+        this.locationwebpage = "";
         this.maplocation = new Location();
     }
 
