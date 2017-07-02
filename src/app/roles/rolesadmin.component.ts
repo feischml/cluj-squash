@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from './service/roles.service';
+import { Role } from './model/roles.model';
 
 @Component({
     templateUrl: './rolesadmin.template.html',
@@ -21,5 +22,18 @@ export class RolesAdminComponent implements OnInit{
                 console.log(err);
             }
         ); 
+    }
+
+    // Delete Role that is not BASIC Role
+    deleteRole(role: Role){
+        this._rolesService.deleteRole(role).subscribe(
+            roleres => {
+                if (roleres){ // if not null then delete it from the table
+                    let index = this.roles.indexOf(roleres);
+                    this.roles.splice(index,1);
+                }
+            },
+            err => console.log(err)
+        );
     }
 }

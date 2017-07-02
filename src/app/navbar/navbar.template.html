@@ -22,6 +22,8 @@
                             <li [class.active]="isRouteActive('coaches')" role="presentation"><a routerLink="coaches">Coaches</a></li>
                             <li role="separator" class="divider"></li>
                             <li [class.active]="isRouteActive('players')" role="presentation"><a routerLink="players">Players</a></li>
+                            <li *ngIf="loggedUser" role="separator" class="divider"></li>
+                            <li *ngIf="loggedUser" [class.active]="isRouteActive('myaccount')" role="presentation"><a routerLink="myaccount">Edit My Account</a></li>
                         </ul>
                     </li>
 
@@ -48,21 +50,17 @@
                             <li role="presentation"><a routerLink="clubsadmin">Manage Clubs</a></li>
                         </ul>
                     </li>
-
-                    <li *ngIf="loggedUser" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li [class.active]="isRouteActive('myaccount')" role="presentation"><a routerLink="myaccount">Edit My Account</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="presentation"><a (click)="logOut()">Log Out</a></li>
-                        </ul>
-                    </li>
                     
                 </ul>
+
                 <p class="navbar-text navbar-right actions">
-                    <a *ngIf="!loggedUser" class="navbar-link login" data-toggle="modal" data-target="#loginModal">Log In</a>
-                    <a class="btn btn-default action-button" role="button" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+                    <a *ngIf="!loggedUser" class="navbar-link login" 
+                        data-toggle="modal" data-target="#loginModal">Log In</a>
+                    <a *ngIf="loggedUser" (click)="logOut()" class="btn btn-default action-button">Log Out</a>
+                    <a *ngIf="!loggedUser" class="btn btn-default action-button" 
+                        role="button" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
                 </p>
+
             </div>
         </div>
     </nav>

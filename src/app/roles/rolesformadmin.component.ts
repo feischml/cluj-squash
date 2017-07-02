@@ -15,6 +15,7 @@ export class RolesFormAdminComponent implements OnInit{
     // Role that will be created or updated
     role = new Role();
     form: FormGroup;
+    newRole: Boolean = false;
 
     constructor(private _rolesService: RolesService,
                 private _route: ActivatedRoute,
@@ -25,7 +26,8 @@ export class RolesFormAdminComponent implements OnInit{
             roletype: [],
             description: [],
             name: [],
-            admin: []
+            admin: [],
+            basic: []
         });
     }
 
@@ -34,7 +36,7 @@ export class RolesFormAdminComponent implements OnInit{
         this._route.params.subscribe(params => {
             var id = params["id"];
         if (!id){
-            console.log("Id of role not specified");
+            this.newRole = true;
         } else { 
             // Get Role by id
             this._rolesService.getRole(id.toString()).subscribe(
