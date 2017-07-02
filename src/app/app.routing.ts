@@ -1,9 +1,9 @@
 import { Router, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ClubsAdminComponent } from './clubs/clubsadmin.component';
-import { ClubsFormAdminComponent } from './clubs/clubsformadmin.component';
-import { EventsAdminComponent } from './events/eventsadmin.component';
-import { EventsFormAdminComponent } from './events/eventsformadmin.component';
+import { ClubsAdminComponent } from './clubs/admin/clubsadmin.component';
+import { ClubsFormAdminComponent } from './clubs/admin/clubsformadmin.component';
+import { EventsAdminComponent } from './events/admin/eventsadmin.component';
+import { EventsFormAdminComponent } from './events/admin/eventsformadmin.component';
 import { MyAccountComponent } from './people/myaccount.component';
 import { UsersAdminComponent } from './people/usersadmin.component';
 import { UsersFormAdminComponent } from './people/usersformadmin.component';
@@ -18,8 +18,8 @@ import { CoachesDetailAdminComponent } from './people/coaches/admin/coachesdetai
 import { PlayersAdminComponent } from './people/players/admin/playersadmin.component';
 import { PlayersDetailAdminComponent } from './people/players/admin/playersdetailadmin.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
-import { AssociationsAdminComponent } from './associations/associationsadmin.component';
-import { AssociationsFormAdminComponent } from './associations/associationsformadmin.component';
+import { AssociationsAdminComponent } from './associations/admin/associationsadmin.component';
+import { AssociationsFormAdminComponent } from './associations/admin/associationsformadmin.component';
 
 export const routing = RouterModule.forRoot([
     { path: 'home', component: HomeComponent },

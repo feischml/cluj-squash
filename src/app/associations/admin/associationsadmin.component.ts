@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AssociationService } from './service/association.service';
-import { Association } from './model/association.model';
+import { AssociationService } from '../service/association.service';
+import { Association } from '../model/association.model';
 
 @Component({
     templateUrl: 'associationsadmin.template.html',

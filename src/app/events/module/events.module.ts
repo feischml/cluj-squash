@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
-import { EventsAdminComponent } from '../eventsadmin.component';
-import { EventsFormAdminComponent } from '../eventsformadmin.component';
+import { EventsAdminComponent } from '../admin/eventsadmin.component';
+import { EventsFormAdminComponent } from '../admin/eventsformadmin.component';
 
 @NgModule({
     imports: [

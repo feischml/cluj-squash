@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClubsService } from './service/clubs.service';
+import { ClubsService } from '../service/clubs.service';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Club } from './model/club.model';
+import { Club } from '../model/club.model';
 
 @Component({
     templateUrl: './clubsformadmin.template.html',

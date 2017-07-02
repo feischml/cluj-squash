@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
-import { AssociationsAdminComponent } from '../associationsadmin.component';
-import { AssociationsFormAdminComponent} from '../associationsformadmin.component';
+import { AssociationsAdminComponent } from '../admin/associationsadmin.component';
+import { AssociationsFormAdminComponent} from '../admin/associationsformadmin.component';
 
 @NgModule({
     imports: [
