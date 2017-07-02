@@ -10,13 +10,16 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">
-                            Achievements
-                        </h4> 
+                        <h3 class="media-heading">
+                            {{ coach.userId.fullname }}
+                        </h3>
+                        <h5 class="media-heading">
+                            Achievements:
+                        </h5> 
                         {{ coach.achivementdescription ? coach.achivementdescription : "No achievement description available. 
                             For more details please contact the coach." }}
                         <h5 class="media-heading">
-                            Experience
+                            Experience:
                         </h5>
                         {{ coach.experiencedescription ? coach.experiencedescription : "No experience description available. 
                             For more details please contact the coach."}}

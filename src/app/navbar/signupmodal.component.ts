@@ -62,6 +62,8 @@ export class SignupmodalComponent implements OnInit{
         this._usersService.registerUser(this.user).subscribe(
             res => {
                 alert("Registration successfull!");
+                // clear all fields
+                this.cancel();
             },
             err => {
                 console.log(err);

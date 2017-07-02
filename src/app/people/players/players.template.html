@@ -10,31 +10,36 @@
                         </a>
                     </div>
                             <div class="media-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h4 class="media-heading">
-                                            Best local ranking
-                                        </h4> 
-                                        {{ player.bestlocalranking ? player.bestlocalranking : "No local ranking available" }}
-                                        
-                                        <h5 class="media-heading">
-                                            Best national ranking
-                                        </h5>
-                                        {{ player.bestnationalranking ? player.bestnationalranking : "No national ranking available at the moment" }}
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5 class="media-heading">
-                                            Best national ranking date
-                                        </h5>
-                                        {{ player.bestnationalrankingdate ? player.bestnationalrankingdate : "No date available" }}
-
-                                        <h5 class="media-heading">
-                                            Achievement
-                                        </h5>
-                                        {{ player.achieventdescription ? player.achieventdescription : "No description of achievements available" }}
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h3 class="media-heading">
+                                        {{ player.userId.fullname }}
+                                    </h3>
+                                    <h5 class="media-heading">
+                                            Best local ranking: {{ player.bestlocalranking ? player.bestlocalranking : "No local ranking available" }}
+                                    </h5> 
                                 </div>
-                            </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="media-heading">
+                                        Best national ranking
+                                    </h5>
+                                    {{ player.bestnationalranking ? player.bestnationalranking : "No national ranking available at the moment" }}
+                                    <h5 class="media-heading">
+                                        Best national ranking date
+                                    </h5>
+                                    {{ player.bestnationalrankingdate ? player.bestnationalrankingdate : "No date available" }}
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="media-heading">
+                                        Achievement
+                                    </h5>
+                                    {{ player.achieventdescription ? player.achieventdescription : "No description of achievements available" }}
+                                </div>
+
+                             </div>
+                        </div>
                 </div>
             </div>
     </div>
