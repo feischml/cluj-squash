@@ -37,10 +37,19 @@ export class NavbarComponent {
         this._authService.logoutUser().subscribe(
             res => { 
                 alert(res['_body']);
-                // Refresh logged user => this should be null
-                this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
-                this.loggedUserIsAdmin = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_ADMIN));
-            });
+                this.refreshLclStorage();
+            },
+            err => {
+                alert("Server error");
+                this.refreshLclStorage();
+            }
+        );
+    }
+
+    private refreshLclStorage(){
+        // Refresh logged user => this should be null
+        this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
+        this.loggedUserIsAdmin = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_ADMIN));
     }
 
 }
