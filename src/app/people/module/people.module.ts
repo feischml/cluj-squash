@@ -9,8 +9,14 @@ import { CoachesComponent } from '../coaches.component';
 import { CoachesDetailComponent } from '../coachesdetail.component';
 import { PlayersComponent } from '../players.component';
 import { PlayersDetailComponent } from '../playersdetail.component';
-import { AccountsAdminComponent } from '../accountsadmin.component';
-import { AccountFormComponent } from '../accountform.component';
+import { UsersAdminComponent } from '../usersadmin.component';
+import { UsersFormAdminComponent } from '../usersformadmin.component';
+
+// Admin component
+import { CoachesAdminComponent } from '../coachesadmin.component';
+import { CoachesDetailAdminComponent } from '../coachesdetailadmin.component';
+import { PlayersAdminComponent } from '../playersadmin.component';
+import { PlayersDetailAdminComponent } from '../playersdetailadmin.component';
 
 @NgModule({
     imports: [
@@ -26,8 +32,12 @@ import { AccountFormComponent } from '../accountform.component';
         CoachesDetailComponent,
         PlayersComponent,
         PlayersDetailComponent,
-        AccountsAdminComponent,
-        AccountFormComponent
+        UsersAdminComponent,
+        UsersFormAdminComponent,
+        CoachesAdminComponent,
+        CoachesDetailAdminComponent,
+        PlayersAdminComponent,
+        PlayersDetailAdminComponent,
     ],
     exports: [
         MyAccountComponent,
@@ -35,8 +45,14 @@ import { AccountFormComponent } from '../accountform.component';
         CoachesDetailComponent,
         PlayersComponent,
         PlayersDetailComponent,
-        AccountsAdminComponent,
-        AccountFormComponent
+        UsersAdminComponent,
+        UsersFormAdminComponent,
+        CoachesAdminComponent,
+        CoachesDetailAdminComponent,
+        PlayersAdminComponent,
+        PlayersDetailAdminComponent,
     ]
 })
+
+// Export Module
 export class PeopleModules{ }

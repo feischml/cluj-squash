@@ -6,12 +6,12 @@ import { FormBuilder, FormGroup }    from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-    templateUrl: './accountform.template.html',
+    templateUrl: './usersformadmin.template.html',
     providers: [UsersService, RolesService]
 })
-export class AccountFormComponent implements OnInit{
+export class UsersFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit Account";
+    componentTitle = "Edit User";
 
     // User to be edited
     user: User;
@@ -85,7 +85,7 @@ export class AccountFormComponent implements OnInit{
         this._userService.updateUser(this.user).subscribe(
             user => {
                 this.user = user;
-                this._router.navigate(['accounts']);
+                this._router.navigate(['usersadmin']);
             },
             err => { 
                 console.log(err)

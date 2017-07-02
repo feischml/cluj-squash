@@ -28,9 +28,24 @@
                     <li *ngIf="loggedUserIsAdmin" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li [class.active]="isRouteActive('accounts')" role="presentation"><a routerLink="accounts">Manage Accounts</a></li>
+                            <li class="dropdown-header">Accounts</li>
+                            <li role="presentation">
+                                <a routerLink="usersadmin">Manage Users</a>
+                            </li>
+                            <li role="presentation">
+                                <a routerLink="playersadmin">Manage Players</a>
+                            </li>
+                            <li role="presentation">
+                                <a routerLink="coachesadmin">Manage Coaches</a>
+                            </li>
                             <li role="separator" class="divider"></li>
-                            <li [class.active]="isRouteActive('roles')" role="presentation"><a routerLink="roles">Manage Roles</a></li>
+                            <li role="presentation"><a routerLink="rolesadmin">Manage Roles</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation"><a routerLink="eventsadmin">Manage Events</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation"><a routerLink="associationsadmin">Manage Associations</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation"><a routerLink="clubsadmin">Manage Clubs</a></li>
                         </ul>
                     </li>
 

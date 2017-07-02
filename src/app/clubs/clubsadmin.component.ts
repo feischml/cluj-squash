@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClubsService } from './service/clubs.service';
+import { Club } from './model/club.model';
 
 @Component({
-    templateUrl: './clubs.template.html',
+    templateUrl: './clubsadmin.template.html',
     providers: [ ClubsService ]
 })
-export class ClubsComponent implements OnInit{
+export class ClubsAdminComponent implements OnInit{
 
     componentTitle = "Clubs";
 
@@ -23,10 +24,19 @@ export class ClubsComponent implements OnInit{
             clubs => { 
                 this.clubs = clubs;  
             }, 
-            function(err){
-                console.log(err);
-            }
+            err => console.log(err)
         );   
+    }
+
+    // Delete Club
+    deleteClub(club: Club){
+        this._clubService.deleteClub(club).subscribe(
+            club => {
+                let index = this.clubs.indexOf(club);
+                this.clubs.splice(index,1);
+            },
+            err => console.log(err)
+        )
     }
 
 }

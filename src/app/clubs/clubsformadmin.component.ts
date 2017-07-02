@@ -5,10 +5,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Club } from './model/club.model';
 
 @Component({
-    templateUrl: './clubsform.template.html',
+    templateUrl: './clubsformadmin.template.html',
     providers: [ ClubsService ]
 })
-export class ClubsFormComponent implements OnInit{ 
+export class ClubsFormAdminComponent implements OnInit{ 
 
     componentTitle = "Club Details";
     form: FormGroup;
@@ -32,22 +32,7 @@ export class ClubsFormComponent implements OnInit{
         // Get the params from the URL 
         this._route.params.subscribe(params => {
             var id = params["id"];
-            var name = params["name"];
-        if (!id){
-            // Get club by name
-            if (!name){
-                return;
-            } else {
-                this._clubsService.getClub(name.toString()).subscribe(
-                    club => { 
-                        this.club = club;  
-                    }, 
-                    function(err){
-                        console.log(err);
-                    } 
-                )
-            }
-        } else { 
+        if (id){
             // Get Club by id
             this._clubsService.getClub("", id.toString()).subscribe(
                 club => { 
@@ -64,7 +49,7 @@ export class ClubsFormComponent implements OnInit{
     save(){        
         var result = this._clubsService.updateCreateClub(this.club);
         result.subscribe(res => {
-            this._router.navigate(['clubs']);
+            this._router.navigate(['clubsadmin']);
         });
     }
 }

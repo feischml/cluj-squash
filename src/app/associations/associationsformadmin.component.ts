@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Events } from './model/events.model';
+import { Association } from './model/association.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventsService } from './service/events.service';
+import { AssociationService } from './service/association.service';
 
 @Component({
-    templateUrl: 'eventsform.template.html',
-    providers: [EventsService]
+    templateUrl: 'associationsformadmin.template.html',
+    providers: [AssociationService]
 })
-export class EventsFormComponent implements OnInit{
+export class AssociationsFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit Event";
+    componentTitle = "Edit Association";
 
-    // Event that will be created or updated
-    event = new Events();
+    // Association that will be created or updated
+    association = new Association();
 
     form: FormGroup;
 
-    constructor(private _eventsService: EventsService,
+    constructor(private _associationsService: AssociationService,
                 private _route: ActivatedRoute,
                 private _router: Router,
                 fb: FormBuilder){
@@ -26,11 +26,7 @@ export class EventsFormComponent implements OnInit{
         this.form = fb.group({
             name: [],
             description: [],
-            webpage: [],
-            eventdate: [],
-            registeruntildate: [],
-            locationdescription: [],
-            locationwebpage: []
+            webpage: []
         });
     }
 
@@ -39,10 +35,10 @@ export class EventsFormComponent implements OnInit{
         this._route.params.subscribe(params => {
             var id = params["id"];
         if (id){
-            // Get Event by id
-            this._eventsService.getEvent(id.toString()).subscribe(
-                event => { 
-                    this.event = event;  
+            // Get Association by id
+            this._associationsService.getAssociation(id.toString()).subscribe(
+                association => { 
+                    this.association = association;  
                 }, 
                 function(err){
                     console.log(err);
@@ -53,9 +49,9 @@ export class EventsFormComponent implements OnInit{
 
     // Save changes made in the form
     save(){        
-        var result = this._eventsService.updateCreateEvent(this.event);
+        var result = this._associationsService.updateCreateAssociation(this.association);
         result.subscribe(res => {
-            this._router.navigate(['events']);
+            this._router.navigate(['associationsadmin']);
         },
         err => {
             console.log(err);

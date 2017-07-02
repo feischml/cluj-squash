@@ -3,10 +3,10 @@ import { EventsService } from './service/events.service';
 import { Events } from './model/events.model';
 
 @Component({
-    templateUrl: 'events.template.html',
+    templateUrl: 'eventsadmin.template.html',
     providers: [ EventsService ]
 })
-export class EventsComponent implements OnInit{
+export class EventsAdminComponent implements OnInit{
 
     componentTitle = "Events";
 

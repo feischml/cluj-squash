@@ -56,4 +56,18 @@ export class ClubsService{
         }
     }
 
+    // Delete Club
+    deleteClub(club: Club){
+        var route = '/clubs/delete/';
+        if (club._id){
+            route = route + club._id;
+            return this._http.delete(
+                this.appConstants.getServerUrl() + route,
+                { headers: this.appConstants.getHeaders() }
+            ).map( res => res.json());
+        } else {
+            alert("Can't delete Club, inconsistent data.");
+        }
+    }
+
 }

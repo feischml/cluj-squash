@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>{{ componentTitle }}</h1>
+
+    <div class="col-md-9">
+            <div class="panel-body">
+                <div class="media" *ngFor="let coach of coaches">
+                    <div class="media-left">
+                        <a [routerLink]="['/coachesadmin/coachid', coach._id]">
+                            <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ coach._id }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            Achievements
+                        </h4> 
+                        {{ coach.achivementdescription ? coach.achivementdescription : "No achievement description available. 
+                            For more details please contact the coach." }}
+                        <h5 class="media-heading">
+                            Experience
+                        </h5>
+                        {{ coach.experiencedescription ? coach.experiencedescription : "No experience description available. 
+                            For more details please contact the coach."}}
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>

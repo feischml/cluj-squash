@@ -1,7 +1,7 @@
 <div class="container">
     <h1>{{ componentTitle }}</h1>
 	<p>
-    	<a routerLink="/clubs/create" class="btn btn-primary">Add Club</a>
+    	<a routerLink="/clubsadmin/create" class="btn btn-primary">Add Club</a>
 	</p>
     <table class="table table-bordered">
 		<thead>
@@ -11,6 +11,7 @@
 				<th>Phone</th>
 				<th>Link</th>
 				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -20,8 +21,13 @@
 				<td>{{ club.phone }}</td>
 				<td>{{ club.webpage }}</td>
 				<td>
-					<a [routerLink]="['/clubs/clubid', club._id]">
+					<a [routerLink]="['/clubsadmin/clubid', club._id]">
 						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+				</td>
+				<td>
+					<a>
+						<i (click)="deleteClub(club)" class="glyphicon glyphicon-remove"></i>
 					</a>
 				</td>
 			</tr>

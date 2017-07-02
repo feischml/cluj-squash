@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
-import { ClubsComponent } from '../clubs.component';
-import { ClubsFormComponent} from '../clubsform.component';
+import { ClubsAdminComponent } from '../clubsadmin.component';
+import { ClubsFormAdminComponent} from '../clubsformadmin.component';
 
 @NgModule({
     imports: [
@@ -16,12 +16,12 @@ import { ClubsFormComponent} from '../clubsform.component';
         ReactiveFormsModule 
     ],
     declarations: [
-        ClubsComponent,
-        ClubsFormComponent,
+        ClubsAdminComponent,
+        ClubsFormAdminComponent,
     ],
     exports: [
-        ClubsComponent,
-        ClubsFormComponent
+        ClubsAdminComponent,
+        ClubsFormAdminComponent
     ]
 })
 export class ClubModules{ }

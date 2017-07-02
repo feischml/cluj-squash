@@ -2,7 +2,7 @@
     <h1>{{ componentTitle }}</h1>
 
     <p>
-        <a routerLink="/events/create" class="btn btn-primary">Create Event</a>
+        <a routerLink="/eventsadmin/create" class="btn btn-primary">Create Event</a>
     </p>
     <table class="table table-bordered">
         <thead>
@@ -28,7 +28,7 @@
                 <td>{{ event.locationdescription }}</td>
                 <td>{{ event.locationwebpage }}</td>
                 <td>
-                    <a [routerLink]="['/events/eventid', event._id]">
+                    <a [routerLink]="['/eventsadmin/eventid', event._id]">
 						<i class="glyphicon glyphicon-edit"></i>
 					</a>
                 </td>

@@ -1,45 +1,51 @@
 import { Router, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ClubsComponent } from './clubs/clubs.component';
-import { ClubsFormComponent } from './clubs/clubsform.component';
-import { EventsComponent } from './events/events.component';
-import { EventsFormComponent } from './events/eventsform.component';
+import { ClubsAdminComponent } from './clubs/clubsadmin.component';
+import { ClubsFormAdminComponent } from './clubs/clubsformadmin.component';
+import { EventsAdminComponent } from './events/eventsadmin.component';
+import { EventsFormAdminComponent } from './events/eventsformadmin.component';
 import { MyAccountComponent } from './people/myaccount.component';
-import { AccountsAdminComponent } from './people/accountsadmin.component';
-import { AccountFormComponent } from './people/accountform.component';
+import { UsersAdminComponent } from './people/usersadmin.component';
+import { UsersFormAdminComponent } from './people/usersformadmin.component';
 import { RolesAdminComponent } from './roles/rolesadmin.component';
 import { RolesFormAdminComponent } from './roles/rolesformadmin.component';
 import { CoachesComponent } from './people/coaches.component';
 import { CoachesDetailComponent } from './people/coachesdetail.component';
 import { PlayersComponent } from './people/players.component';
 import { PlayersDetailComponent } from './people/playersdetail.component';
+import { CoachesAdminComponent } from './people/coachesadmin.component';
+import { CoachesDetailAdminComponent } from './people/coachesdetailadmin.component';
+import { PlayersAdminComponent } from './people/playersadmin.component';
+import { PlayersDetailAdminComponent } from './people/playersdetailadmin.component';
 import { ProsquashComponent } from './prosquash/prosquash.component';
-import { AssociationComponent } from './associations/association.component';
-import { AssociationFormComponent } from './associations/associationform.component';
-
+import { AssociationsAdminComponent } from './associations/associationsadmin.component';
+import { AssociationsFormAdminComponent } from './associations/associationsformadmin.component';
 
 export const routing = RouterModule.forRoot([
     { path: 'home', component: HomeComponent },
-    { path: 'clubs', component: ClubsComponent },
-    { path: 'clubs/create', component: ClubsFormComponent },
-    { path: 'clubs/clubname/:name', component: ClubsFormComponent },
-    { path: 'clubs/clubid/:id', component: ClubsFormComponent },
+    { path: 'clubsadmin', component: ClubsAdminComponent },
+    { path: 'clubsadmin/create', component: ClubsFormAdminComponent },
+    { path: 'clubsadmin/clubid/:id', component: ClubsFormAdminComponent },
     { path: 'coaches', component: CoachesComponent },
     { path: 'coaches/coachid/:id', component: CoachesDetailComponent },
     { path: 'players', component: PlayersComponent },
     { path: 'players/playerid/:id', component: PlayersDetailComponent },
+    { path: 'coachesadmin', component: CoachesAdminComponent },
+    { path: 'coachesadmin/coachid/:id', component: CoachesDetailAdminComponent },
+    { path: 'playersadmin', component: PlayersAdminComponent },
+    { path: 'playersadmin/playerid/:id', component: PlayersDetailAdminComponent },
     { path: 'myaccount', component: MyAccountComponent },
-    { path: 'accounts', component: AccountsAdminComponent},
-    { path: 'accounts/userid/:id', component: AccountFormComponent},
-    { path: 'roles', component: RolesAdminComponent},
-    { path: 'roles/roleid/:id', component: RolesFormAdminComponent},
-    { path: 'roles/create', component: RolesFormAdminComponent},
+    { path: 'usersadmin', component: UsersAdminComponent},
+    { path: 'usersadmin/userid/:id', component: UsersFormAdminComponent},
+    { path: 'rolesadmin', component: RolesAdminComponent},
+    { path: 'rolesadmin/roleid/:id', component: RolesFormAdminComponent},
+    { path: 'rolesadmin/create', component: RolesFormAdminComponent},
     { path: 'prosquash', component: ProsquashComponent },
-    { path: 'associations', component: AssociationComponent},
-    { path: 'associations/associationid/:id', component: AssociationFormComponent},
-    { path: 'associations/create', component: AssociationFormComponent},
-    { path: 'events', component: EventsComponent },
-    { path: 'events/eventid/:id', component: EventsFormComponent },
-    { path: 'events/create', component: EventsFormComponent },
+    { path: 'associationsadmin', component: AssociationsAdminComponent},
+    { path: 'associationsadmin/associationid/:id', component: AssociationsFormAdminComponent},
+    { path: 'associationsadmin/create', component: AssociationsFormAdminComponent},
+    { path: 'eventsadmin', component: EventsAdminComponent },
+    { path: 'eventsadmin/eventid/:id', component: EventsFormAdminComponent },
+    { path: 'eventsadmin/create', component: EventsFormAdminComponent },
     { path: '**', component: HomeComponent }
 ]);

@@ -4,12 +4,12 @@ import { UsersService} from './service/users.service';
 import { RolesService } from '../roles/service/roles.service';
 
 @Component({
-    templateUrl: './accountsadmin.template.html',
+    templateUrl: './usersadmin.template.html',
     providers: [UsersService, RolesService]
 })
-export class AccountsAdminComponent implements OnInit{
+export class UsersAdminComponent implements OnInit{
 
-    componentTitle = "Accounts";
+    componentTitle = "Users";
 
     // List of Users (Accounts)
     users = [];

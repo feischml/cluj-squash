@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
-import { AssociationComponent } from '../association.component';
-import { AssociationFormComponent} from '../associationform.component';
+import { AssociationsAdminComponent } from '../associationsadmin.component';
+import { AssociationsFormAdminComponent} from '../associationsformadmin.component';
 
 @NgModule({
     imports: [
@@ -16,12 +16,12 @@ import { AssociationFormComponent} from '../associationform.component';
         ReactiveFormsModule 
     ],
     declarations: [
-        AssociationComponent,
-        AssociationFormComponent,
+        AssociationsAdminComponent,
+        AssociationsFormAdminComponent,
     ],
     exports: [
-        AssociationComponent,
-        AssociationFormComponent
+        AssociationsAdminComponent,
+        AssociationsFormAdminComponent
     ]
 })
 export class AssociationModules{ }

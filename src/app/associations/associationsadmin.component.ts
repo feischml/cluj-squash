@@ -3,10 +3,10 @@ import { AssociationService } from './service/association.service';
 import { Association } from './model/association.model';
 
 @Component({
-    templateUrl: 'association.template.html',
+    templateUrl: 'associationsadmin.template.html',
     providers: [AssociationService]
 })
-export class AssociationComponent implements OnInit{
+export class AssociationsAdminComponent implements OnInit{
 
     componentTitle = "Associations";
 
@@ -21,20 +21,19 @@ export class AssociationComponent implements OnInit{
             associations => {
                 this.associations = associations
             },
-            err => {
-                console.log(err);
-        });
+            err => console.log(err)
+        );
     }
 
+    // Delete association from list
     deleteAssociation(association: Association){
         this._associationsService.deleteAssociation(association).subscribe(
             associations => {
                 let index = this.associations.indexOf(association);
                 this.associations.splice(index,1);
             },
-            err => {
-                console.log(err);
-        });
+            err => console.log(err)
+        );
     }
 
 }

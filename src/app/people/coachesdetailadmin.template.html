@@ -20,17 +20,20 @@
 					</div>
                     <div class='form-group'>
 						<label for="achivementdescription">Achievements</label>
-						<textarea readonly type="text" class="form-control" id="achivementdescription" [(ngModel)]="coachUser.coach.achivementdescription" 
+						<textarea type="text" class="form-control" id="achivementdescription" [(ngModel)]="coachUser.coach.achivementdescription" 
                             name="achivementdescription" #achivementdescription formControlName="achivementdescription">
 						</textarea>
 					</div>
                     <div class='form-group'>
 						<label for="experiencedescription">Experience</label>
-						<textarea readonly type="experiencedescription" class="form-control" id="experiencedescription" 
+						<textarea type="experiencedescription" class="form-control" id="experiencedescription" 
                         [(ngModel)]="coachUser.coach.experiencedescription" name="experiencedescription" 
                         #experiencedescription formControlName="experiencedescription">
 						</textarea>
 					</div>
+                    <button type="submit" class="btn btn-primary">
+                		Save Changes
+        			</button>
                 </div>
             </div>
         </form>

@@ -52,7 +52,7 @@ export class RolesFormAdminComponent implements OnInit{
     save(){        
         var result = this._rolesService.updateCreateRole(this.role);
         result.subscribe(res => {
-            this._router.navigate(['roles']);
+            this._router.navigate(['rolesadmin']);
         },
         err => {
             console.log(err);

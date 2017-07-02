@@ -2,7 +2,7 @@
     <h1>{{ componentTitle }}</h1>
 
     <p>
-        <a routerLink="/roles/create" class="btn btn-primary">Add Role</a>
+        <a routerLink="/rolesadmin/create" class="btn btn-primary">Add Role</a>
     </p>
     <table class="table table-bordered">
         <thead>
@@ -21,7 +21,7 @@
                 <td>{{ role.description }}</td>
                 <td>{{ role.admin }}</td>
                 <td>
-                    <a [routerLink]="['/roles/roleid', role._id]">
+                    <a [routerLink]="['/rolesadmin/roleid', role._id]">
 						<i class="glyphicon glyphicon-edit"></i>
 					</a>
                 </td>
