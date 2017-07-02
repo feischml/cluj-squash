@@ -5,7 +5,7 @@
             <div class="panel-body">
                 <div class="media" *ngFor="let player of players">
                     <div class="media-left">
-                        <a [routerLink]="['/players/playerid', player._id]">
+                        <a [routerLink]="['/playersadmin/playerid', player._id]">
                             <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ player._id }}">
                         </a>
                     </div>
