@@ -7,7 +7,7 @@ import { RolesService } from './service/roles.service';
 })
 export class RolesAdminComponent implements OnInit{
 
-    componentTitle = "Roles";
+    componentTitle = "Manage Roles";
     // List of all the Roles
     roles = [];
     constructor(private _rolesService: RolesService){ }

@@ -8,7 +8,7 @@ import { Events } from '../model/events.model';
 })
 export class EventsAdminComponent implements OnInit{
 
-    componentTitle = "Events";
+    componentTitle = "Manage Events";
 
     // List of Events
     events = [];

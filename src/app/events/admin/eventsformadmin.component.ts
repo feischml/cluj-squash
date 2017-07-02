@@ -10,7 +10,7 @@ import { EventsService } from '../service/events.service';
 })
 export class EventsFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit Event";
+    componentTitle = "Manage Event Details";
 
     // Event that will be created or updated
     event = new Events();

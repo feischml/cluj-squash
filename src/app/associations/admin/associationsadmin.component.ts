@@ -8,7 +8,7 @@ import { Association } from '../model/association.model';
 })
 export class AssociationsAdminComponent implements OnInit{
 
-    componentTitle = "Associations";
+    componentTitle = "Manage Associations";
 
     // List of Associations
     associations = [];

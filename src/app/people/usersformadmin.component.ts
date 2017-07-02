@@ -11,7 +11,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class UsersFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit User";
+    componentTitle = "Manage User Details";
 
     // User to be edited
     user: User;

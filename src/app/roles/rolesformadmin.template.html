@@ -7,7 +7,7 @@
             <fieldset>
                 <div class="form-group">
                     <label>Type</label>
-                    <input [(ngModel)]="role.roletype" name="roletype" #roletype formControlName="roletype" type="text" class="form-control">
+                    <input [readonly]="role.roletype" [(ngModel)]="role.roletype" name="roletype" #roletype formControlName="roletype" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
@@ -22,7 +22,7 @@
 
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" [(ngModel)]="role.admin" #admin formControlName="admin"  value="">Admin role
+                        <input disabled readonly type="checkbox" [(ngModel)]="role.admin" #admin formControlName="admin"  value="">Admin role
                     </label>
                 </div>
                 

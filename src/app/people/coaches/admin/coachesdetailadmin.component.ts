@@ -14,7 +14,7 @@ export class CoachesDetailAdminComponent implements OnInit{
     coachUser: CoachUser;
     form: FormGroup;
 
-    componentTitle = "Coach Detail";
+    componentTitle = "Manage Coach Details";
 
     constructor(private _coachService: CoachesService,
                 fb: FormBuilder,

@@ -10,7 +10,7 @@ import { Club } from '../model/club.model';
 })
 export class ClubsFormAdminComponent implements OnInit{ 
 
-    componentTitle = "Club Details";
+    componentTitle = "Manage Club Details";
     form: FormGroup;
     // The actual club edited in the form
     club = new Club();

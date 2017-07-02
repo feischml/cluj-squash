@@ -9,7 +9,7 @@ import { Club } from '../model/club.model';
 })
 export class ClubsAdminComponent implements OnInit{
 
-    componentTitle = "Clubs";
+    componentTitle = "Manage Clubs";
 
     // List of all the clubs
     clubs = [];

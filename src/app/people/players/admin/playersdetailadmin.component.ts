@@ -10,7 +10,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class PlayersDetailAdminComponent implements OnInit{
 
-    componentTitle = "Player Detail";
+    componentTitle = "Manage Player Details";
     form: FormGroup;
     playerUser: PlayerUser;
 

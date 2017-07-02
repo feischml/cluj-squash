@@ -10,7 +10,7 @@ import { Role } from './model/roles.model';
 })
 export class RolesFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit Role";
+    componentTitle = "Manage Role Details";
 
     // Role that will be created or updated
     role = new Role();
@@ -36,7 +36,7 @@ export class RolesFormAdminComponent implements OnInit{
         if (!id){
             console.log("Id of role not specified");
         } else { 
-            // Get Club by id
+            // Get Role by id
             this._rolesService.getRole(id.toString()).subscribe(
                 role => { 
                     this.role = role;  

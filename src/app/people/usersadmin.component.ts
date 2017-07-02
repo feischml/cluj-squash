@@ -9,7 +9,7 @@ import { RolesService } from '../roles/service/roles.service';
 })
 export class UsersAdminComponent implements OnInit{
 
-    componentTitle = "Users";
+    componentTitle = "Manage Users";
 
     // List of Users (Accounts)
     users = [];

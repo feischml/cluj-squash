@@ -8,7 +8,7 @@ import { PlayersService} from '../../service/players.service';
 })
 export class PlayersAdminComponent implements OnInit{
 
-    componentTitle = "Players";
+    componentTitle = "Manage Players";
     players = [];
 
     constructor(private _playersService: PlayersService){ }

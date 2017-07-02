@@ -10,7 +10,7 @@ import { AssociationService } from '../service/association.service';
 })
 export class AssociationsFormAdminComponent implements OnInit{
 
-    componentTitle = "Edit Association";
+    componentTitle = "Manage Association Details";
 
     // Association that will be created or updated
     association = new Association();
