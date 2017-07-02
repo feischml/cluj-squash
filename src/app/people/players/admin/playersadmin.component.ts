@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayersService} from './service/players.service';
+import { PlayersService} from '../../service/players.service';
 
 
 @Component({
-    templateUrl: './players.template.html',
+    templateUrl: './playersadmin.template.html',
     providers: [PlayersService]
 })
-export class PlayersComponent implements OnInit{
+export class PlayersAdminComponent implements OnInit{
 
     componentTitle = "Players";
     players = [];

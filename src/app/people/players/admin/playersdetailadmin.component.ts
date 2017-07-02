@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayersService } from './service/players.service';
-import { PlayerUser } from './model/playeruser.model'; 
+import { PlayersService } from '../../service/players.service';
+import { PlayerUser } from '../../model/playeruser.model'; 
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-    templateUrl: './playersdetail.template.html',
+    templateUrl: './playersdetailadmin.template.html',
     providers: [PlayersService]
 })
-export class PlayersDetailComponent implements OnInit{
+export class PlayersDetailAdminComponent implements OnInit{
 
     componentTitle = "Player Detail";
     form: FormGroup;
@@ -59,7 +59,7 @@ export class PlayersDetailComponent implements OnInit{
         this._playersService.updatePlayer(this.playerUser).subscribe(
             playerUser => {
                 this.playerUser = playerUser;
-                this._router.navigate(['players']);
+                this._router.navigate(['playersadmin']);
             },
             err => { 
                 console.log(err)

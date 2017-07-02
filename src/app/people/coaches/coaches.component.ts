@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoachesService } from './service/coaches.service';
+import { CoachesService } from '../service/coaches.service';
 
 @Component({
     templateUrl: './coaches.template.html',

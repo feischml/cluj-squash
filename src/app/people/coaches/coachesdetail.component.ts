@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CoachesService } from './service/coaches.service';
-import { CoachUser } from './model/coachuser.model'; 
+import { CoachesService } from '../service/coaches.service';
+import { CoachUser } from '../model/coachuser.model'; 
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 

@@ -5,18 +5,18 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Components
 import { MyAccountComponent } from '../myaccount.component';
-import { CoachesComponent } from '../coaches.component';
-import { CoachesDetailComponent } from '../coachesdetail.component';
-import { PlayersComponent } from '../players.component';
-import { PlayersDetailComponent } from '../playersdetail.component';
+import { CoachesComponent } from '../coaches/coaches.component';
+import { CoachesDetailComponent } from '../coaches/coachesdetail.component';
+import { PlayersComponent } from '../players/players.component';
+import { PlayersDetailComponent } from '../players/playersdetail.component';
 import { UsersAdminComponent } from '../usersadmin.component';
 import { UsersFormAdminComponent } from '../usersformadmin.component';
 
 // Admin component
-import { CoachesAdminComponent } from '../coachesadmin.component';
-import { CoachesDetailAdminComponent } from '../coachesdetailadmin.component';
-import { PlayersAdminComponent } from '../playersadmin.component';
-import { PlayersDetailAdminComponent } from '../playersdetailadmin.component';
+import { CoachesAdminComponent } from '../coaches/admin/coachesadmin.component';
+import { CoachesDetailAdminComponent } from '../coaches/admin/coachesdetailadmin.component'
+import { PlayersAdminComponent } from '../players/admin/playersadmin.component';
+import { PlayersDetailAdminComponent } from '../players/admin/playersdetailadmin.component';
 
 @NgModule({
     imports: [
