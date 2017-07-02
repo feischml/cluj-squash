@@ -3,9 +3,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-// Components
+// Components Admin
 import { ClubsAdminComponent } from '../admin/clubsadmin.component';
-import { ClubsFormAdminComponent} from '../admin/clubsformadmin.component';
+import { ClubsFormAdminComponent } from '../admin/clubsformadmin.component';
+// Component Non-Admin
+import { ClubsComponent } from '../clubs.component';
 
 @NgModule({
     imports: [
@@ -18,10 +20,12 @@ import { ClubsFormAdminComponent} from '../admin/clubsformadmin.component';
     declarations: [
         ClubsAdminComponent,
         ClubsFormAdminComponent,
+        ClubsComponent
     ],
     exports: [
         ClubsAdminComponent,
-        ClubsFormAdminComponent
+        ClubsFormAdminComponent,
+        ClubsComponent
     ]
 })
 export class ClubModules{ }
