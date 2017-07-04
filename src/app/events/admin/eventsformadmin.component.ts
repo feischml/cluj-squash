@@ -6,7 +6,7 @@ import { EventsService } from '../service/events.service';
 
 @Component({
     templateUrl: 'eventsformadmin.template.html',
-    providers: [EventsService]
+    providers: [ EventsService ]
 })
 export class EventsFormAdminComponent implements OnInit{
 

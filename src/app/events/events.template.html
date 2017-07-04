@@ -1,3 +1,27 @@
 <div class="container">
     <h1>{{ componentTitle }}</h1>
+
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li *ngFor="let event of events" data-target="#bs-carousel">
+  </ol>
+  
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div *ngFor="let event of events" class="item slides">
+      <div class="hero">
+        
+            <h1>{{ event.name }}</h1>        
+            <h3>{{ event.description }}</h3>
+       
+        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+      </div>
+    </div>
+  </div> 
+</div>
+
 </div>

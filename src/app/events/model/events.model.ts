@@ -1,4 +1,5 @@
 import { Location } from '../../common/models/location.model';
+import { User } from '../../people/model/users.model';
 
 export class Events{
 
@@ -11,6 +12,7 @@ export class Events{
     locationdescription: String;
     locationwebpage: String;
     maplocation: Location;
+    userIds: User[];
 
     constructor(){
         this._id = "";
@@ -20,6 +22,7 @@ export class Events{
         this.locationdescription = "";
         this.locationwebpage = "";
         this.maplocation = new Location();
+        this.userIds = [];
     }
 
 }
