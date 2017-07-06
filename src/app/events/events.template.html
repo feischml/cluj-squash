@@ -1,6 +1,5 @@
 <div class="container">
     <h1>{{ componentTitle }}</h1>
-
   <div class="carousel slide" data-ride="carousel" id="carousel-1" data-interval="3000" >
         <div class="carousel-inner" role="listbox">
           <div *ngFor="let event of events; let i = index" [class]="i == 0 ? 'item active' : 'item'">
@@ -8,10 +7,9 @@
             <div class="hero">
               <h1 style="color: darkgrey">{{ event.name }}</h1>        
               <h3 style="color: coral">{{ event.description }}</h3>
-              <button class="btn btn-hero btn-lg" role="button">Subscribe</button>
+              <button *ngIf="loggedUser" class="btn btn-hero btn-lg" role="button">Register</button>
             </div>
           </div>
-
         </div>
         <div>
             <a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
@@ -22,5 +20,4 @@
                  [class]="i == 0 ? 'active' : null">
         </ol>
   </div>
-
 </div>
