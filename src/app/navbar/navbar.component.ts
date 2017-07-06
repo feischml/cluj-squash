@@ -16,11 +16,9 @@ export class NavbarComponent {
     loggedUser: User;
     loggedUserIsAdmin: boolean;
     private lclStorage: LclStorageService;
-    private appConstants: AppConstants;
 
     constructor(private _router: Router,
                 private _authService: AuthService) {
-        this.appConstants = new AppConstants();
         this.lclStorage = new LclStorageService();
         // Transform String into Object User
         this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
