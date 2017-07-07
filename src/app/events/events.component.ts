@@ -38,4 +38,10 @@ export class EventsComponent implements OnInit{
         // Todo when loggen in/out refresh Register button
     }
 
+    // Register User for an event
+    register(event: Event, loggedUser: User){
+        console.log(JSON.stringify(event));
+        console.log(JSON.stringify(loggedUser));
+    }
+
 }

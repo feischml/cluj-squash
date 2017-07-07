@@ -36,6 +36,8 @@ export class NavbarComponent {
             res => { 
                 alert(res['_body']);
                 this.refreshLclStorage();
+                // Navigate to home component, this is a WORKAROUND for communication between Components
+                this._router.navigate(['/home']);
             },
             err => {
                 alert("Server error");

@@ -7,7 +7,9 @@
             <div class="hero">
               <h1 style="color: darkgrey">{{ event.name }}</h1>        
               <h3 style="color: coral">{{ event.description }}</h3>
-              <button *ngIf="loggedUser" class="btn btn-hero btn-lg" role="button">Register</button>
+              <button *ngIf="loggedUser" class="btn btn-hero btn-lg" role="button" 
+                  (click)="register(event,loggedUser)">Register
+              </button>
             </div>
           </div>
         </div>
