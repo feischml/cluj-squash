@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
 import { Events } from '../model/events.model';
+import { User } from '../../people/model/users.model';
 
 @Injectable()
 export class EventsService{
@@ -64,6 +65,21 @@ export class EventsService{
         } else {
             alert("Can't delete Event, inconsistent data.");
         }
+    }
+
+    // Register User for Event
+    registerUser(event: Events, user: User){
+        var route = '/events/register';
+        var registerUser = {
+            userId: user._id,
+            eventId: event._id
+        };
+
+        return this._http.put(
+            this.appConstants.getServerUrl() + route,
+            registerUser,
+            { headers: this.appConstants.getHeaders() }
+        ).map( res => res.json());
     }
 
 }
