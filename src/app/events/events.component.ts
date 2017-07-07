@@ -41,12 +41,21 @@ export class EventsComponent implements OnInit{
 
     // Register User for an event
     register(event: Events, loggedUser: User){
-        console.log(JSON.stringify(event));
-        console.log(JSON.stringify(loggedUser));
+        this._eventsservice.registerOrUnregisterUser(true, event, loggedUser).subscribe(
+            uEvent => { 
+                console.log(uEvent);
+            },
+            error => {
+                console.log(error);
+            }
+        )
+    }
 
-        this._eventsservice.registerUser(event, loggedUser).subscribe(
-            events => { 
-                this.events = events
+    // Unregister User from an event
+    unregister(event: Events, loggedUser: User){
+        this._eventsservice.registerOrUnregisterUser(false, event, loggedUser).subscribe(
+            uEvent => { 
+                console.log(uEvent);
             },
             error => {
                 console.log(error);

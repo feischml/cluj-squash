@@ -68,8 +68,12 @@ export class EventsService{
     }
 
     // Register User for Event
-    registerUser(event: Events, user: User){
-        var route = '/events/register';
+    registerOrUnregisterUser(register: boolean, event: Events, user: User){
+        if (register)
+            var route = '/events/register';
+        else
+            var route = '/events/unregister';
+
         var registerUser = {
             userId: user._id,
             eventId: event._id
