@@ -16,6 +16,7 @@ export class Events{
     userRegistered: Boolean;
     isNews: Boolean;
     participationAllowed: Boolean;
+    rankingId: String;
 
     constructor(){
         this._id = "";
@@ -29,6 +30,7 @@ export class Events{
         this.userRegistered = false;
         this.isNews = false;
         this.participationAllowed = false;
+        this.rankingId = "";
     }
 
 }
