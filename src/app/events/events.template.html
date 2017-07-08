@@ -7,11 +7,11 @@
             <div class="hero">
               <h1 style="color: darkgrey">{{ event.name }}</h1>        
               <h3 style="color: coral">{{ event.description }}</h3>
-              <button *ngIf="loggedUser && !registered" class="btn btn-hero btn-lg" role="button" 
+              <button *ngIf="loggedUser && !event.userRegistered" class="btn btn-hero btn-lg" role="button" 
                   (click)="register(event,loggedUser)">Register
               </button>
 
-              <button *ngIf="loggedUser && registered" class="btn btn-hero btn-lg" role="button" 
+              <button *ngIf="loggedUser && event.userRegistered" class="btn btn-hero btn-lg" role="button" 
                   (click)="unregister(event,loggedUser)">Un-Register
               </button>
             </div>

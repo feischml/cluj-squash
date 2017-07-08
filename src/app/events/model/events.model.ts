@@ -12,7 +12,8 @@ export class Events{
     locationdescription: String;
     locationwebpage: String;
     maplocation: Location;
-    userIds: User[];
+    userIds: String[];
+    userRegistered: Boolean;
 
     constructor(){
         this._id = "";
@@ -23,6 +24,7 @@ export class Events{
         this.locationwebpage = "";
         this.maplocation = new Location();
         this.userIds = [];
+        this.userRegistered = false;
     }
 
 }

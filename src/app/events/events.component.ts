@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EventsService } from './service/events.service';
 import { User } from '../people/model/users.model';
 import { LclStorageService } from '../lclstorage/lclstorage.service';
@@ -10,11 +10,11 @@ import { Events } from './model/events.model';
     styleUrls: ['styles/events.style.css'],
     providers: [ EventsService ]
 })
-export class EventsComponent implements OnInit{
+export class EventsComponent{
 
     componentTitle = "Events";
     // Listr of events
-    events = [];
+    events: Events [] = [];
 
     // Get logged in User
     loggedUser: User;
@@ -24,8 +24,8 @@ export class EventsComponent implements OnInit{
         // Get logged user info
         this.lclStorage = new LclStorageService();
         this.loggedUser = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
-
-        this._eventsservice.getEvents().subscribe(
+        
+        this._eventsservice.getEvents(this.loggedUser).subscribe(
             events => { 
                 this.events = events
             },
@@ -35,32 +35,27 @@ export class EventsComponent implements OnInit{
         )
     }
 
-    ngOnInit(){
-        // Todo when loggen in/out refresh Register button
-    }
-
     // Register User for an event
-    register(event: Events, loggedUser: User){
+    private register(event: Events, loggedUser: User){
         this._eventsservice.registerOrUnregisterUser(true, event, loggedUser).subscribe(
-            uEvent => { 
-                console.log(uEvent);
-            },
-            error => {
-                console.log(error);
-            }
+            uEvent => {  this.updateEvent(event, true) },
+            error => { alert('Registration unsuccessful') }
         )
     }
 
     // Unregister User from an event
-    unregister(event: Events, loggedUser: User){
+    private unregister(event: Events, loggedUser: User){
         this._eventsservice.registerOrUnregisterUser(false, event, loggedUser).subscribe(
-            uEvent => { 
-                console.log(uEvent);
-            },
-            error => {
-                console.log(error);
-            }
+            uEvent => {  this.updateEvent(event, false) },
+            error => { alert('Unregistration unsuccessful') }
         )
+    }
+
+    // Update event after registration/unregistration
+    private updateEvent(event: Events, registered: Boolean){
+        let index = this.events.indexOf(event);
+        if (index >= 0)
+            this.events[index].userRegistered = registered;
     }
 
 }

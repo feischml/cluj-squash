@@ -13,15 +13,30 @@ export class EventsService{
 
     constructor( private _http: Http ){
         this.appConstants = new AppConstants();
-     }
+    }
 
-     // Return the list of Events from the server
-    getEvents(){
+    // Return the list of Events from the server
+    // Check also if current user is registered or not to an event
+    getEvents(loggedUser: User){
         var route = '/events/events';
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() }).
-            map( res => res.json());
+            map( res => {
+                let events: Events[] = JSON.parse(JSON.stringify(res.json()));
+                events.forEach(element => {
+
+                    element.userRegistered = 
+                        (loggedUser && element.userIds.indexOf(loggedUser._id) >= 0) ? true : false;
+
+                    //if (element.userIds.indexOf(loggedUser._id) >= 0){
+                    //    element.userRegistered = true;
+                    //} else {
+                    //    element.userRegistered = false;
+                    //}
+                });
+                return events;
+            });
     }
 
     // Return an Event with a given id
@@ -74,6 +89,7 @@ export class EventsService{
         else
             var route = '/events/unregister';
 
+        // Create Object to be sent to server
         var registerUser = {
             userId: user._id,
             eventId: event._id
