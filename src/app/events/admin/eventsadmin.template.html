@@ -14,6 +14,8 @@
                 <th>Registration Opened Until Date</th>
                 <th>Location Description</th>
                 <th>Location Webpage</th>
+                <th>News article</th>
+                <th>Allow registration</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -27,6 +29,8 @@
                 <td>{{ event.registeruntildate }}</td>
                 <td>{{ event.locationdescription }}</td>
                 <td>{{ event.locationwebpage }}</td>
+                <td>{{ event.isNews }}</td>
+                <td>{{ event.participationAllowed}}
                 <td>
                     <a [routerLink]="['/eventsadmin/eventid', event._id]">
 						<i class="glyphicon glyphicon-edit"></i>

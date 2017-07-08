@@ -12,7 +12,7 @@ import { Events } from './model/events.model';
 })
 export class EventsComponent{
 
-    componentTitle = "Events";
+    componentTitle = "New arrivals";
     // Listr of events
     events: Events [] = [];
 

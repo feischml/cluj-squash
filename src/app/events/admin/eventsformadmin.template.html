@@ -36,6 +36,20 @@
                     <input [(ngModel)]="event.locationwebpage" #locationwebpage 
                     formControlName="locationwebpage" type="text" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label class="checkbox-inline">
+                        <input [(ngModel)]="event.isNews" #isNews 
+                        formControlName="isNews" type="checkbox">
+                        News Article
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-inline">
+                        <input [(ngModel)]="event.participationAllowed" #participationAllowed 
+                        formControlName="participationAllowed" type="checkbox">
+                        Registration of Users allowed
+                    </label>
+                </div>
             </fieldset>
             <button type="submit" class="btn btn-primary">
                 Save Changes

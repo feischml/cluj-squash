@@ -10,7 +10,7 @@ import { EventsService } from '../service/events.service';
 })
 export class EventsFormAdminComponent implements OnInit{
 
-    componentTitle = "Manage Event Details";
+    componentTitle = "Manage Event and News";
 
     // Event that will be created or updated
     event = new Events();
@@ -30,7 +30,9 @@ export class EventsFormAdminComponent implements OnInit{
             eventdate: [],
             registeruntildate: [],
             locationdescription: [],
-            locationwebpage: []
+            locationwebpage: [],
+            isNews: [],
+            participationAllowed: []
         });
     }
 
