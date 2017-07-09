@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>{{ componentTitle }}</h1>
+
+    <p>
+        <a (click)="addRanking()" class="btn btn-primary">Add Ranking</a>
+    </p>
+
+    <form *ngIf="ranking" [formGroup]="form" (ngSubmit)="save(form)">
+        <div formArrayName="details">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Points</th>
+                        <th>Full Name</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <!--<tr *ngFor="let detail of form.controls.details.controls; let i=index"> -->
+                        <tr *ngFor="let detail of ranking.details; let i=index">
+                        <div [formGroupName]="i">
+                            <td>
+                                <div>
+                                    <input [(ngModel)]="detail.position" placeholder="Position" type="text" formControlName="position" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input [(ngModel)]="detail.points" placeholder="Points" type="text" formControlName="points" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input [(ngModel)]="detail.fullname" placeholder="Full name" type="text" formControlName="fullname" />
+                                </div>
+                            </td>
+                            <td>
+                                <a (click)="deleteRanking(i)">
+                                    <i class="glyphicon glyphicon-minus"></i>
+                                </a>
+                        </div>
+                        
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        <button type="submit" class="btn btn-primary">
+                Save Changes
+        </button>
+    </form>
+
+</div>

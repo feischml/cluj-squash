@@ -22,6 +22,7 @@ import { FooterModules } from './footer/module/footer.module';
 import { PeopleModules } from './people/module/people.module';
 import { RolesModules } from './roles/module/roles.module';
 import { ProsquashModules } from './prosquash/module/prosquash.module';
+import { RankingsModules } from './rankings/module/rankings.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProsquashModules } from './prosquash/module/prosquash.module';
   imports: [
     AssociationModules,
     RolesModules,
+    RankingsModules,
     PeopleModules,
     ProsquashModules,
     HomeModules,

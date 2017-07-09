@@ -25,15 +25,8 @@ export class EventsService{
             map( res => {
                 let events: Events[] = JSON.parse(JSON.stringify(res.json()));
                 events.forEach(element => {
-
                     element.userRegistered = 
                         (loggedUser && element.userIds.indexOf(loggedUser._id) >= 0) ? true : false;
-
-                    //if (element.userIds.indexOf(loggedUser._id) >= 0){
-                    //    element.userRegistered = true;
-                    //} else {
-                    //    element.userRegistered = false;
-                    //}
                 });
                 return events;
             });
@@ -98,6 +91,23 @@ export class EventsService{
         return this._http.put(
             this.appConstants.getServerUrl() + route,
             registerUser,
+            { headers: this.appConstants.getHeaders() }
+        ).map( res => res.json());
+    }
+
+    // Update Ranking ID
+    updateRankingId(rankId: String, eventId: String){
+        var route = '/events/updateRankingId';
+
+        // Create Object to be sent to server
+        var updateRanking = {
+            rankingId: rankId,
+            eventId: eventId
+        };
+
+        return this._http.put(
+            this.appConstants.getServerUrl() + route,
+            updateRanking,
             { headers: this.appConstants.getHeaders() }
         ).map( res => res.json());
     }
