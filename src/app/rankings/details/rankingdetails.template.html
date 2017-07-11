@@ -1,0 +1,22 @@
+
+<div [formGroup]="detail" class="row">
+     <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormInputGroup">Position</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon">#</div>
+            <input type="text" class="form-control" formControlName="position" id="inlineFormInputGroup" placeholder="Position">
+        </div>
+     </div>
+    <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormPoints">Points</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon">Points</div>
+            <input type="text" class="form-control" formControlName="points" id="inlineFormPoint">
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <label class="sr-only" for="inlineFormInput">Full name</label>
+        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" formControlName="fullname" 
+            id="inlineFormInput" placeholder="Full name">
+    </div>
+</div>

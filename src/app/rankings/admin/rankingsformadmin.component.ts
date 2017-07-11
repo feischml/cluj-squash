@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Rankings } from '../model/rankings.model';
 import { RankingsDetail } from '../model/rankingsdetail.model';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
@@ -10,21 +10,21 @@ import { EventsService } from '../../events/service/events.service';
     templateUrl: 'rankingsformadmin.template.html',
     providers: [ RankingsService, EventsService ]
 })
-export class RankingsFormAdminComponent{
+export class RankingsFormAdminComponent implements OnInit{
 
     componentTitle = "Manage Ranking";
 
     // Ranking that will be created or updated
-    ranking: Rankings;
+    ranking: Rankings = new Rankings();
 
     form: FormGroup;
 
     constructor(private _rankingsService: RankingsService,
-                private _eventsService: EventsService,
-                private _route: ActivatedRoute,
-                private _router: Router,
-                private fb: FormBuilder){
-
+                 private _eventsService: EventsService,
+                 private _route: ActivatedRoute,
+                 private _router: Router,
+                 private fb: FormBuilder){
+    
         // Get the params from the URL 
         this._route.params.subscribe(params => {
             var rankId = params["rankId"];
@@ -33,21 +33,8 @@ export class RankingsFormAdminComponent{
             this._rankingsService.getRanking(rankId.toString()).subscribe(
                 ranking => { 
                     if (ranking){
-                        console.log(JSON.stringify(ranking));
-                        this.ranking = JSON.parse(JSON.stringify(ranking));  
-                        // Build the form
-                        this.form = this.fb.group({
-                            details: this.fb.array(
-                                this.ranking.details.map(x => this.fb.group({
-                                    _id: [x._id],
-                                    position: [x.position],
-                                    points: [x.points],
-                                    fullname: [x.fullname]
-                                }))
-                            )
-                        });  
-                    }else{
-                        this.addRanking();
+                        this.ranking = ranking; 
+                        this.patchValues(); 
                     }
                 }, 
                 function(err){
@@ -55,24 +42,53 @@ export class RankingsFormAdminComponent{
                 })  
             }
         });
+
     }
 
-    initRankingsDetail() {
-        return this.fb.group(
-            new RankingsDetail()
-        );
+    ngOnInit(){
+        this.form = this.fb.group({
+            details: this.fb.array([]) 
+        });  
     }
 
-    // Save changes made in the form
-    private save(form){        
+    private patchValues() {
+        let control = <FormArray>this.form.controls['details'];
+        this.ranking.details.forEach(x => {
+            control.push(this.patch(x._id, x.position, x.points, x.fullname));
+        })
+    }
+
+    private patch(_id, position, points, fullname){
+        return this.fb.group({
+            _id: [_id],
+            position: [position],
+            points: [points],
+            fullname: [fullname]
+        });
+    }
+
+    private initDetails() {
+        return this.fb.group({
+            _id: [''],
+            position: [''],
+            points: [''],
+            fullname: ['']
+        });
+    }
+
+    private addRanking() {
+        const control = <FormArray>this.form.controls['details'];
+        control.push(this.initDetails());
+    }
+
+    save(form){
         this.ranking.details = form.value['details'];
         var result = this._rankingsService.updateCreateRanking(this.ranking);
         result.subscribe(res => {
-            console.log(this._router.url);
             if (this._router.url.indexOf('eventrankingid') > -1){
                 // Update Event with new ID
                 this._eventsService.updateRankingId(res['_id'],this._route.snapshot.params['eventId']).subscribe(
-                    res => console.log(res),
+                    res => res,
                     err => console.log(err)
                 )
                 this._router.navigate(['eventsadmin']);
@@ -83,26 +99,10 @@ export class RankingsFormAdminComponent{
         });
     }
 
-    // Add new ranking line
-    private addRanking(){
-        if (!this.ranking){
-            this.ranking = new Rankings();
-            const control = <FormArray>this.form.controls['details'];
-            control.push(this.initRankingsDetail());
-        }
-        else{    
-            let detail = new RankingsDetail();
-            this.ranking.details.push(detail);
-            const control = <FormArray>this.form.controls['details'];
-            control.push(this.initRankingsDetail());
-        }
-    }
-
-    // Delete ranking line
     private deleteRanking(position){
-        const control = <FormArray>this.form.controls['details'];
-        control.removeAt(position);
-        this.ranking.details.splice(position, 1);
-    }
+         const control = <FormArray>this.form.controls['details'];
+         control.removeAt(position);
+         this.ranking.details.splice(position, 1);
+     }
 
 }
