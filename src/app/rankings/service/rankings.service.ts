@@ -28,6 +28,7 @@ export class RankingsService{
         var route;
         if (!ranking._id){
             route = '/rankings/create';
+            console.log('create');
             return this._http.post(
                     this.appConstants.getServerUrl() + route, 
                     JSON.stringify(ranking),
