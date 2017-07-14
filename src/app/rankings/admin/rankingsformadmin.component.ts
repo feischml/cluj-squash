@@ -85,18 +85,11 @@ export class RankingsFormAdminComponent implements OnInit{
         this.ranking.details = form.value['details'];
         var result = this._rankingsService.updateCreateRanking(this.ranking);
         result.subscribe(res => {
-            //if (this._router.url.indexOf('eventrankingid') > -1){
-                // Update Event with new ID
-                console.log(res);
-
-                this._eventsService.updateRankingId(res['_id'],this._route.snapshot.params['eventId']).subscribe(
-                    res => res,
-                    err => console.log(err)
-                )
-                this._router.navigate(['eventsadmin']);
-            //} else {
-            //    
-            //}
+            this._eventsService.updateRankingId(res['_id'],this._route.snapshot.params['eventId']).subscribe(
+                res => res,
+                err => console.log(err)
+            )
+            this._router.navigate(['eventsadmin']);
         },
         err => {
             console.log(err);
