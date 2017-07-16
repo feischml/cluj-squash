@@ -26,10 +26,10 @@ export class SeasonTypeAdminComponent implements OnInit{
     }
 
     // Delete SeasonType from list
-    deleteSeasonType(seasontype: SeasonType){
-        this._seasonTypeService.deleteSeasonType(seasontype).subscribe(
+    deleteSeasonType(seasontypeToDelete: SeasonType){
+        this._seasonTypeService.deleteSeasonType(seasontypeToDelete).subscribe(
             seasontype => {
-                let index = this.seasontypes.indexOf(seasontype);
+                let index = this.seasontypes.indexOf(seasontypeToDelete);
                 this.seasontypes.splice(index,1);
             },
             err => console.log(err)

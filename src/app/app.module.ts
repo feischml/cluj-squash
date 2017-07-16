@@ -24,6 +24,7 @@ import { RolesModules } from './roles/module/roles.module';
 import { ProsquashModules } from './prosquash/module/prosquash.module';
 import { RankingsModules } from './rankings/module/rankings.module';
 import { SeasonTypeModules } from './seasontype/module/seasontype.module';
+import { SeasonModules } from './season/module/season.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SeasonTypeModules } from './seasontype/module/seasontype.module';
   ],
   imports: [
     SeasonTypeModules,
+    SeasonModules,
     AssociationModules,
     RolesModules,
     RankingsModules,
