@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>{{ componentTitle }}</h1>
+
+    <p>
+        <a routerLink="/seasontypeadmin/create" class="btn btn-primary">Create Season Type</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Beginner</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let seasontype of seasontypes">
+                <td>{{ seasontype.name }}</td>
+                <td>{{ seasontype.beginner }}</td>
+                <td>
+                    <a [routerLink]="['/seasontypeadmin/seasontypeid', seasontype._id]">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+                </td>
+                <td>
+					<a>
+						<i (click)="deleteSeasonType(seasontype)" class="glyphicon glyphicon-remove"></i>
+					</a>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>   

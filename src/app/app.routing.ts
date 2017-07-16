@@ -40,6 +40,10 @@ import { AssociationsAdminComponent } from './associations/admin/associationsadm
 import { AssociationsFormAdminComponent } from './associations/admin/associationsformadmin.component';
 import { AssociationsComponent } from './associations/associations.component';
 
+// Season Types
+import { SeasonTypeAdminComponent } from './seasontype/admin/seasontypeadmin.component'
+import { SeasonTypeFormAdminComponent } from './seasontype/admin/seasontypeformadmin.component';
+
 // Rankings
 import { RankingsFormAdminComponent } from './rankings/admin/rankingsformadmin.component';
 
@@ -83,6 +87,10 @@ export const routing = RouterModule.forRoot([
     { path: 'events', component: EventsComponent },
     // Event-> Rankings
     { path: 'rankings/eventrankingid/:rankId/:eventId', component: RankingsFormAdminComponent },
+    // Season Type
+    { path: 'seasontypeadmin', component: SeasonTypeAdminComponent},
+    { path: 'seasontypeadmin/seasontypeid/:id', component: SeasonTypeFormAdminComponent},
+    { path: 'seasontypeadmin/create', component: SeasonTypeFormAdminComponent},
     // Others
     { path: '**', component: HomeComponent }
 ]);

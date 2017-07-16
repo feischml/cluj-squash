@@ -23,6 +23,7 @@ import { PeopleModules } from './people/module/people.module';
 import { RolesModules } from './roles/module/roles.module';
 import { ProsquashModules } from './prosquash/module/prosquash.module';
 import { RankingsModules } from './rankings/module/rankings.module';
+import { SeasonTypeModules } from './seasontype/module/seasontype.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RankingsModules } from './rankings/module/rankings.module';
     NavbarComponent
   ],
   imports: [
+    SeasonTypeModules,
     AssociationModules,
     RolesModules,
     RankingsModules,
