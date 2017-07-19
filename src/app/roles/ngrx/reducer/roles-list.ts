@@ -9,7 +9,7 @@ const initialState: RolesListState = [];
 
 export default function (state = initialState, action: Action): RolesListState {
     switch (action.type) {
-        case RolesActions.GET_ROLES:
+        case RolesActions.GET_ROLES_SUCCESS:
             return action.payload;
         default: return state;
     }
