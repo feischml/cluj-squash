@@ -18,7 +18,7 @@ export class RolesService{
     }
 
      // Return the list of Roles from the server
-    getRoles(){
+    getRoles(): Observable<Role[]>{
         var route = '/roles/roles';
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
@@ -27,7 +27,7 @@ export class RolesService{
     }
 
     // Return a role with a given id
-    getRole(id: String){
+    getRole(id: String): Observable<Role>{
         var route = '/roles/roleid/' + id;
         return this._http.get(
                 this.appConstants.getServerUrl() + route,
