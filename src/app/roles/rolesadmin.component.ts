@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from './service/roles.service';
 import { Role } from './model/roles.model';
 
-//import { RolesActions } from './ngrx/actions/roles.actions';
-//import { Store } from '@ngrx/store';
-//import { RolesState } from './ngrx/reducer/roles.state';
+import { Store } from '@ngrx/store';
+import { RolesState } from './ngrx/reducer/roles.state';
+import * as RolesActions from './ngrx/actions/roles.actions';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -16,20 +16,19 @@ export class RolesAdminComponent implements OnInit{
 
     componentTitle = "Manage Roles";
     // List of all the Roles
-    // roles: Observable<Role[]>;
+    roles2: Observable<Role[]>;
  
     roles = [];
-    constructor(private _rolesService: RolesService
-                //private roleActions: RolesActions,
-                //private store: Store<RolesState>
+    constructor(private _rolesService: RolesService,
+                private store: Store<RolesState>
                 ){ }
 
     ngOnInit(){
-        // Try to call Store
-        //this.roles = this.store.select('roles');
-        
+        // Try to call Store ===========================
+        this.roles2 = this.store.select('roles');
+        this.store.dispatch({type: RolesActions.GET_ROLES_SUCCESS});
+        // =============================================
 
-        
         this._rolesService.getRoles().subscribe(
             roles => { 
                 this.roles = roles;  

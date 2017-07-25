@@ -1,5 +1,5 @@
-// import * as fromRolesList from './roles-list.reducer';
+import * as fromRolesList from './roles-list.reducer';
 
-// export interface RolesState {
-//     roles: fromRolesList.RolesListState;
-// };
+export interface RolesState {
+    roles: fromRolesList.RolesListState;
+};
