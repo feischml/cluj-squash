@@ -8,7 +8,7 @@ import { RolesAdminComponent } from '../rolesadmin.component';
 import { RolesFormAdminComponent } from '../rolesformadmin.component';
 
 //import { StoreModule } from '@ngrx/store';
-//import { rolesListReducer } from '../ngrx/reducer/roles-list';
+//import { rolesListReducer } from '../ngrx/reducer/roles-list.reducer';
 
 @NgModule({
     imports: [
@@ -17,7 +17,7 @@ import { RolesFormAdminComponent } from '../rolesformadmin.component';
         CommonModule,
         HttpModule,
         ReactiveFormsModule
-        //,StoreModule.forRoot({})
+        //,StoreModule.
     ],
     declarations: [
         RolesAdminComponent,

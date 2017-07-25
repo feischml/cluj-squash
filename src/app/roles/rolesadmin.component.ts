@@ -17,7 +17,7 @@ export class RolesAdminComponent implements OnInit{
     componentTitle = "Manage Roles";
     // List of all the Roles
     // roles: Observable<Role[]>;
-
+ 
     roles = [];
     constructor(private _rolesService: RolesService
                 //private roleActions: RolesActions,

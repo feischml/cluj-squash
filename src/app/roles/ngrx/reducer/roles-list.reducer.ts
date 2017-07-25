@@ -1,15 +1,16 @@
 // import { Role } from '../../model/roles.model';
-// import { Action } from '@ngrx/store';
-// import * as book from '../actions/roles.actions';
+// import * as RolesActions from '../actions/roles.actions';
 
 // export type RolesListState = Role[];
+
+// export type Action = RolesActions.All;
 
 // // initial state
 // const initialState: RolesListState = [];
 
-// export function rolesListReducer(state = initialState, action: book.GetRolesSuccessAction): RolesListState {
+// export function rolesListReducer(state = initialState, action: Action): RolesListState {
 //     switch (action.type) {
-//         case book.RolesActions.GET_ROLES_SUCCESS:
+//         case RolesActions.GET_ROLES_SUCCESS:
 //             return action.payload;
         
 //         default: 
