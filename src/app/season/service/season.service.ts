@@ -66,4 +66,17 @@ export class SeasonService{
         }
     }
 
+    // Update actualRankingId
+    updateActualRanking(rankingId: string, seasonId: string){
+        var route = '/season/updateRankingId';
+        return this._http.put(
+            this.appConstants.getServerUrl() + route,
+            { 
+              seasonId: seasonId,
+              rankingId: rankingId
+            },
+            { headers: this.appConstants.getHeaders() }
+        ).map( res => res.json());
+    }
+
 }

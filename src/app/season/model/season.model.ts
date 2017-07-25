@@ -16,6 +16,7 @@ export class Season{
         this.endDate = new Date();
         this.seasonTypeId = "";
         this.description = "";
+        this.actualRankingId = "";
         this.rankingArchiveIds = [];
     }
 }

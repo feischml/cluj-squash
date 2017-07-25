@@ -5,10 +5,11 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RankingsService } from '../service/rankings.service';
 import { EventsService } from '../../events/service/events.service';
+import { SeasonService } from '../../season/service/season.service';
 
 @Component({
     templateUrl: 'rankingsformadmin.template.html',
-    providers: [ RankingsService, EventsService ]
+    providers: [ RankingsService, EventsService, SeasonService ]
 })
 export class RankingsFormAdminComponent implements OnInit{
 
@@ -21,6 +22,7 @@ export class RankingsFormAdminComponent implements OnInit{
 
     constructor(private _rankingsService: RankingsService,
                  private _eventsService: EventsService,
+                 private _seasonService: SeasonService,
                  private _route: ActivatedRoute,
                  private _router: Router,
                  private fb: FormBuilder){
@@ -85,11 +87,24 @@ export class RankingsFormAdminComponent implements OnInit{
         this.ranking.details = form.value['details'];
         var result = this._rankingsService.updateCreateRanking(this.ranking);
         result.subscribe(res => {
-            this._eventsService.updateRankingId(res['_id'],this._route.snapshot.params['eventId']).subscribe(
-                res => res,
-                err => console.log(err)
-            )
-            this._router.navigate(['eventsadmin']);
+
+            // Update Event since we are working with an event
+            if (this._route.snapshot.params['eventId']){
+                this._eventsService.updateRankingId(res['_id'],this._route.snapshot.params['eventId']).subscribe(
+                    res => res,
+                    err => console.log(err)
+                );
+                this._router.navigate(['eventsadmin']);
+            }
+
+            if (this._route.snapshot.params['seasonId']){
+                this._seasonService.updateActualRanking(res['_id'], this._route.snapshot.params['seasonId']).subscribe(
+                    res => res,
+                    err => console.log(err)
+                );
+                this._router.navigate(['seasonadmin']);
+            }
+            
         },
         err => {
             console.log(err);

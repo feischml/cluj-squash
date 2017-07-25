@@ -99,6 +99,8 @@ export const routing = RouterModule.forRoot([
     { path: 'seasonadmin', component: SeasonAdminComponent},
     { path: 'seasonadmin/seasonid/:id', component: SeasonFormAdminComponent},
     { path: 'seasonadmin/create', component: SeasonFormAdminComponent},
+    // Season-> Rangings
+    { path: 'rankings/seasonrankingid/:rankId/:seasonId', component: RankingsFormAdminComponent },
     // Others
     { path: '**', component: HomeComponent }
 ]);
