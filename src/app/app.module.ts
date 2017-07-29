@@ -26,6 +26,9 @@ import { RankingsModules } from './rankings/module/rankings.module';
 import { SeasonTypeModules } from './seasontype/module/seasontype.module';
 import { SeasonModules } from './season/module/season.module';
 
+import { StoreModule } from '@ngrx/store';
+import { rolesListReducer } from './roles/ngrx/reducer/roles-list.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { SeasonModules } from './season/module/season.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    routing
+    routing,
+    StoreModule.forRoot({rolesListReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

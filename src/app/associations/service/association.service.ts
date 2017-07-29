@@ -3,6 +3,9 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
 import { Association} from '../model/association.model';
+import { Observable } from "rxjs/Observable";
+import { Store } from "@ngrx/store";
+import { AppState } from '../../ngrx/storestate/app.state';
 
 @Injectable()
 export class AssociationService{
@@ -10,9 +13,14 @@ export class AssociationService{
     // Application Constants
     private appConstants;
 
-    constructor( private _http: Http ){
+    // Associations
+    associations: Observable<Array<Association>>;
+
+    constructor( private _http: Http,
+                 private _store: Store<AppState> ){
         this.appConstants = new AppConstants();
-     }
+        this.associations = this._store.select('associations');
+    }
 
      // Return the list of Associations from the server
     getAssociations(){

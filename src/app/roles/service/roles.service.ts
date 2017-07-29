@@ -17,7 +17,7 @@ export class RolesService{
         this.appConstants = new AppConstants();
     }
 
-     // Return the list of Roles from the server
+    // Return the list of Roles from the server
     getRoles(): Observable<Role[]>{
         var route = '/roles/roles';
         return this._http.get(
