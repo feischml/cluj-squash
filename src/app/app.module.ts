@@ -27,7 +27,8 @@ import { SeasonTypeModules } from './seasontype/module/seasontype.module';
 import { SeasonModules } from './season/module/season.module';
 
 import { StoreModule } from '@ngrx/store';
-import { rolesListReducer } from './roles/ngrx/reducer/roles-list.reducer';
+import { assotiationsReducer } from './ngrx/reducer/associations.reducer';
+import { NotfoundpageModule } from "app/notfoundpage/module/notfoundpage.module";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { rolesListReducer } from './roles/ngrx/reducer/roles-list.reducer';
     NavbarComponent
   ],
   imports: [
+    NotfoundpageModule,
     SeasonTypeModules,
     SeasonModules,
     AssociationModules,
@@ -52,7 +54,7 @@ import { rolesListReducer } from './roles/ngrx/reducer/roles-list.reducer';
     ReactiveFormsModule,
     HttpModule,
     routing,
-    StoreModule.forRoot({rolesListReducer})
+    StoreModule.forRoot({assotiationsReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

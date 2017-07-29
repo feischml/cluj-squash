@@ -16,6 +16,9 @@ export class AssociationsAdminComponent implements OnInit{
     constructor(private _associationsService: AssociationService){ }
 
     ngOnInit(){
+        // Call the service with store
+        this._associationsService.getAssociationsDispatch();
+
         // Load the Associations list
         this._associationsService.getAssociations().subscribe(
             associations => {

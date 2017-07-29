@@ -3,9 +3,11 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppConstants} from '../../app.constants';
 import { Association} from '../model/association.model';
+
 import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 import { AppState } from '../../ngrx/storestate/app.state';
+import * as associationActions from '../../ngrx/actions/associations.actions';
 
 @Injectable()
 export class AssociationService{
@@ -18,8 +20,27 @@ export class AssociationService{
 
     constructor( private _http: Http,
                  private _store: Store<AppState> ){
+        
         this.appConstants = new AppConstants();
-        this.associations = this._store.select('associations');
+
+        this.associations = this._store.select(
+            (state:AppState) => {
+                return state.associations.associations
+            }
+        );
+
+    }
+
+    getAssociationsDispatch(){
+        var route = '/associations/associations';
+        console.log("Calling action GET_ASSOCIATIONS");
+        this._http.get(
+                this.appConstants.getServerUrl() + route,
+                { headers: this.appConstants.getHeaders() })
+            .map( associations => associations.json())
+            .map( payload => ({ type: associationActions.GET_ASSOCIATIONS, payload: payload}) )
+            .subscribe( action => this._store.dispatch(action));
+                    
     }
 
      // Return the list of Associations from the server

@@ -7,6 +7,8 @@ export class AssociationsComponent{
 
     componentTitle = "Associations";
 
-    constructor(){ }
+    constructor(){ 
+
+    }
 
 }

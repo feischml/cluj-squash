@@ -51,6 +51,9 @@ import { SeasonFormAdminComponent } from './season/admin/seasonformadmin.compone
 // Rankings
 import { RankingsFormAdminComponent } from './rankings/admin/rankingsformadmin.component';
 
+// Not Found Page
+import { NotfoundpageComponent } from "app/notfoundpage/notfoundpage.component";
+
 export const routing = RouterModule.forRoot([
     { path: 'home', component: HomeComponent },
     // Clubs
@@ -102,5 +105,5 @@ export const routing = RouterModule.forRoot([
     // Season-> Rangings
     { path: 'rankings/seasonrankingid/:rankId/:seasonId', component: RankingsFormAdminComponent },
     // Others
-    { path: '**', component: HomeComponent }
+    { path: '**', component: NotfoundpageComponent }
 ]);
