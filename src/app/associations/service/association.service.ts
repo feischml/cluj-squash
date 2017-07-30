@@ -8,6 +8,7 @@ import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 import { AppState } from '../../ngrx/storestate/app.state';
 import * as associationActions from '../../ngrx/actions/associations.actions';
+import { AssociationState } from "app/ngrx/reducer/associations.reducer";
 
 @Injectable()
 export class AssociationService{
@@ -16,19 +17,22 @@ export class AssociationService{
     private appConstants;
 
     // Associations
-    associations: Observable<Array<Association>>;
+    associations$: Observable<Array<Association>>;
 
     constructor( private _http: Http,
-                 private _store: Store<AppState> ){
+                 private _store: Store<AssociationState> ){
         
         this.appConstants = new AppConstants();
 
-        this.associations = this._store.select(
-            (state:AppState) => {
-                return state.associations.associations
-            }
-        );
-
+        this.associations$ = this._store.//select(
+            //(state:AppState) => {
+            //    return state.associations
+            //}
+        //).
+        select('associations');
+        
+        console.log("Store: " + this.associations$);
+        
     }
 
     getAssociationsDispatch(){

@@ -8,6 +8,8 @@ import { AssociationsAdminComponent } from '../admin/associationsadmin.component
 import { AssociationsFormAdminComponent } from '../admin/associationsformadmin.component';
 // Components Non-Admin
 import { AssociationsComponent } from '../associations.component';
+// Assotioationlist - reusable table
+import { AssociationlistComponent } from '../associationlist.component';
 
 @NgModule({
     imports: [
@@ -18,14 +20,16 @@ import { AssociationsComponent } from '../associations.component';
         ReactiveFormsModule 
     ],
     declarations: [
+        AssociationlistComponent,
         AssociationsAdminComponent,
         AssociationsFormAdminComponent,
-        AssociationsComponent
+        AssociationsComponent  
     ],
     exports: [
         AssociationsAdminComponent,
         AssociationsFormAdminComponent,
-        AssociationsComponent
+        AssociationsComponent,
+        AssociationlistComponent
     ]
 })
 export class AssociationModules{ }

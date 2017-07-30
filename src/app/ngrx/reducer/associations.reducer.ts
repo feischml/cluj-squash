@@ -17,7 +17,9 @@ export function assotiationsReducer(state = initialState, action: AssociationsAc
     switch (action.type) {
         case AssociationsActions.GET_ASSOCIATIONS:
             console.log(action.payload);
-            return action.payload;
+            console.log(Object.assign({}, state, {associations: action.payload}))
+            //return action.payload;
+            return Object.assign({}, state, {associations: action.payload});
         
         case AssociationsActions.GET_ASSOCIATION:
             console.log("Association: " + action.payload);

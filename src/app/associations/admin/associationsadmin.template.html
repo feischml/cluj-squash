@@ -4,33 +4,6 @@
     <p>
         <a routerLink="/associationsadmin/create" class="btn btn-primary">Create Association</a>
     </p>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Webpage</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let association of associations">
-                <td>{{ association.name }}</td>
-                <td>{{ association.webpage }}</td>
-                <td>{{ association.description }}</td>
-                <td>
-                    <a [routerLink]="['/associationsadmin/associationid', association._id]">
-						<i class="glyphicon glyphicon-edit"></i>
-					</a>
-                </td>
-                <td>
-					<a>
-						<i (click)="deleteAssociation(association)" class="glyphicon glyphicon-remove"></i>
-					</a>
-				</td>
-            </tr>
-        </tbody>
-    </table>
+    <association-list [associations]="associations$ | async"></association-list>
 
 </div>   
