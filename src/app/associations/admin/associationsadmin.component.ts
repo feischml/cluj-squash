@@ -38,16 +38,16 @@ export class AssociationsAdminComponent implements OnInit{
     //     );
     // }
 
-    associations$: Observable<Array<Association>>;
+    associations$: Observable<Association[]>;
 
-    constructor(private _associationsService: AssociationService){
-        
-    }
+    //associations$: Association[];
+
+    constructor( private _associationsService: AssociationService ){ }
 
     ngOnInit(){
-        this._associationsService.getAssociationsDispatch();
         this.associations$ = this._associationsService.associations$;
-        this.associations$.subscribe(res => console.log(res), err => console.log(err));
+        this._associationsService.getAssociationsDispatch();
+        //this.associations$.subscribe(res => console.log(res));
     }
 
 }

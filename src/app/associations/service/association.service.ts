@@ -17,7 +17,8 @@ export class AssociationService{
     private appConstants;
 
     // Associations
-    associations$: Observable<Array<Association>>;
+    associations$: Observable<Association[]>;
+    //associations$: Association[];
 
     constructor( private _http: Http,
                  private _store: Store<AssociationState> ){
@@ -29,10 +30,8 @@ export class AssociationService{
             //    return state.associations
             //}
         //).
-        select('associations');
-        
-        console.log("Store: " + this.associations$);
-        
+        select('associations');//.subscribe(res => { this.associations$ = res; console.log(res); }); 
+        //console.log(this.associations$);
     }
 
     getAssociationsDispatch(){
@@ -44,7 +43,11 @@ export class AssociationService{
             .map( associations => associations.json())
             .map( payload => ({ type: associationActions.GET_ASSOCIATIONS, payload: payload}) )
             .subscribe( action => this._store.dispatch(action));
-                    
+        //console.log(this._store.select<Association[]>( state => { console.log("State: " + state.associations);
+        //return state.associations;} ));
+
+        console.log(this.associations$);
+        this.associations$.subscribe(res => console.log(res));
     }
 
      // Return the list of Associations from the server

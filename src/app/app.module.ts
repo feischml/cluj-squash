@@ -25,10 +25,11 @@ import { ProsquashModules } from './prosquash/module/prosquash.module';
 import { RankingsModules } from './rankings/module/rankings.module';
 import { SeasonTypeModules } from './seasontype/module/seasontype.module';
 import { SeasonModules } from './season/module/season.module';
+import { NotfoundpageModule } from "app/notfoundpage/module/notfoundpage.module";
 
 import { StoreModule } from '@ngrx/store';
 import { assotiationsReducer } from './ngrx/reducer/associations.reducer';
-import { NotfoundpageModule } from "app/notfoundpage/module/notfoundpage.module";
+
 
 @NgModule({
   declarations: [
