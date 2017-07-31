@@ -8,7 +8,7 @@ import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 import { AppState } from '../../ngrx/storestate/app.state';
 import * as associationActions from '../../ngrx/actions/associations.actions';
-import { AssociationState } from "app/ngrx/reducer/associations.reducer";
+//import { AssociationState } from "app/ngrx/reducer/associations.reducer";
 
 @Injectable()
 export class AssociationService{
@@ -16,41 +16,32 @@ export class AssociationService{
     // Application Constants
     private appConstants;
 
-    // Associations
+    // Associations Observable
     associations$: Observable<Association[]>;
-    //associations$: Association[];
 
     constructor( private _http: Http,
-                 private _store: Store<AssociationState> ){
+                 private _store: Store<AppState> ){
         
         this.appConstants = new AppConstants();
-
-        this.associations$ = this._store.//select(
-            //(state:AppState) => {
-            //    return state.associations
-            //}
-        //).
-        select('associations');//.subscribe(res => { this.associations$ = res; console.log(res); }); 
-        //console.log(this.associations$);
+        this.associations$ = this._store.select(
+            (state:AppState) => {
+                return state.associations
+            }
+        ).select('associations');
     }
 
+    // Rerturn the list of Associations and dispatch to store
     getAssociationsDispatch(){
         var route = '/associations/associations';
-        console.log("Calling action GET_ASSOCIATIONS");
         this._http.get(
                 this.appConstants.getServerUrl() + route,
                 { headers: this.appConstants.getHeaders() })
             .map( associations => associations.json())
             .map( payload => ({ type: associationActions.GET_ASSOCIATIONS, payload: payload}) )
             .subscribe( action => this._store.dispatch(action));
-        //console.log(this._store.select<Association[]>( state => { console.log("State: " + state.associations);
-        //return state.associations;} ));
-
-        //console.log(this.associations$);
-        this._store.select('associations').subscribe( ass => console.log("ass: " + ass));
     }
 
-     // Return the list of Associations from the server
+    // Return the list of Associations from the server
     getAssociations(){
         var route = '/associations/associations';
         return this._http.get(

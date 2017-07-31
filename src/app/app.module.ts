@@ -55,7 +55,7 @@ import { assotiationsReducer } from './ngrx/reducer/associations.reducer';
     ReactiveFormsModule,
     HttpModule,
     routing,
-    StoreModule.forRoot({assotiationsReducer})
+    StoreModule.forRoot({ associations: assotiationsReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
