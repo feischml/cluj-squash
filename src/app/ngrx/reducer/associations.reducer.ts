@@ -13,7 +13,7 @@ export const initialState: AssociationState = {
     selectedAssotiation: null
 };
 
-export function assotiationsReducer(state = initialState, action: AssociationsActions.Actions) {
+export function assotiationsReducer(state = initialState, action: AssociationsActions.Actions):AssociationState {
     switch (action.type) {
         case AssociationsActions.GET_ASSOCIATIONS:
             return Object.assign( {}, state, {associations: action.payload});

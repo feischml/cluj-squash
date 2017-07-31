@@ -46,8 +46,8 @@ export class AssociationService{
         //console.log(this._store.select<Association[]>( state => { console.log("State: " + state.associations);
         //return state.associations;} ));
 
-        console.log(this.associations$);
-        this.associations$.subscribe(res => console.log(res));
+        //console.log(this.associations$);
+        this._store.select('associations').subscribe( ass => console.log("ass: " + ass));
     }
 
      // Return the list of Associations from the server
