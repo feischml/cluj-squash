@@ -19,7 +19,20 @@ export function assotiationsReducer(state = initialState, action: AssociationsAc
             return Object.assign( {}, state, {associations: action.payload});
         
         case AssociationsActions.GET_ASSOCIATION:
-            //console.log("Association: " + action.payload);
+            console.log("Association: " + action.payload);
+
+        case AssociationsActions.CREATE_ASSOCIATION:
+            return Object.assign( {}, state, {associations: [...state.associations, action.payload]});
+
+        case AssociationsActions.DELETE_ASSOCIATION:
+            return state.associations.filter(item => {
+                return item._id !== action.payload._id;
+            });
+
+        case AssociationsActions.UPDATE_ASSOCIATION:
+            return state.associations.map(item => {
+                return item._id === action.payload._id ? Object.assign({}, item, action.payload) : item;
+            });
 
         default: 
             return state;
