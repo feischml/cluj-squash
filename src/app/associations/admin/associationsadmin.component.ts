@@ -47,4 +47,9 @@ export class AssociationsAdminComponent implements OnInit{
         this._associationsService.getAssociationsDispatch();       
     }
 
+    //Delete association from list
+    deleteAssotiation(association: Association){
+        this._associationsService.deleteAssociationDispatch(association);
+    }
+
 }

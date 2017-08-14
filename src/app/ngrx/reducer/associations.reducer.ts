@@ -25,10 +25,11 @@ export function assotiationsReducer(state = initialState, action: AssociationsAc
             return Object.assign( {}, state, {associations: [...state.associations, action.payload]});
 
         case AssociationsActions.DELETE_ASSOCIATION:
-            return state.associations.filter(item => {
-                if (item._id != action.payload._id)
+            let newAssociationsState = state.associations.filter( item => { 
+                if (item._id != action.payload._id) 
                     return item;
             });
+            return Object.assign( {}, state, {associations: newAssociationsState});
 
         case AssociationsActions.UPDATE_ASSOCIATION:
             return state.associations.map(item => {

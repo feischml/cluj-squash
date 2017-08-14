@@ -4,6 +4,8 @@
     <p>
         <a routerLink="/associationsadmin/create" class="btn btn-primary">Create Association</a>
     </p>
-    <association-list [associations]="associations$ | async"></association-list>
+    <association-list [associations]="associations$ | async"
+                      (deletedAssociation)="deleteAssotiation($event)"    
+    ></association-list>
 
 </div>   
