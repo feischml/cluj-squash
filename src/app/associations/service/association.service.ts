@@ -41,6 +41,25 @@ export class AssociationService{
             .subscribe( action => this._store.dispatch(action));
     }
 
+    // Delete Association and despatch to store
+    deleteAssociationDispatch(association: Association){
+        var route = '/associations/delete/';
+        if (association._id){
+            route = route + association._id;
+            this._http.delete(
+                this.appConstants.getServerUrl() + route,
+                { headers: this.appConstants.getHeaders() }
+            )
+            .map( res => res.json())
+            .map( payload => ({ type: associationActions.DELETE_ASSOCIATION, payload: payload }) )
+            .subscribe( action => this._store.dispatch(action));
+        } else {
+            alert("Can't delete Association, inconsistent data.");
+        }
+    }
+
+// *************** Old Implementation ***************
+
     // Return the list of Associations from the server
     getAssociations(){
         var route = '/associations/associations';

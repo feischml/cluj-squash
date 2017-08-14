@@ -26,7 +26,8 @@ export function assotiationsReducer(state = initialState, action: AssociationsAc
 
         case AssociationsActions.DELETE_ASSOCIATION:
             return state.associations.filter(item => {
-                return item._id !== action.payload._id;
+                if (item._id != action.payload._id)
+                    return item;
             });
 
         case AssociationsActions.UPDATE_ASSOCIATION:
