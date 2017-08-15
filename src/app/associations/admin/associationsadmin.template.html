@@ -1,11 +1,10 @@
 <div class="container">
     <h1>{{ componentTitle }}</h1>
-
     <p>
-        <a routerLink="/associationsadmin/create" class="btn btn-primary">Create Association</a>
+        <a (click)="createAssociation()" class="btn btn-primary">Create Association</a>
     </p>
     <association-list [associations]="associations$ | async"
-                      (deletedAssociation)="deleteAssotiation($event)"    
-    ></association-list>
-
+                      (deletedAssociation)="deleteAssociation($event)"  
+                      (selectedAssociation)="selectAssociation($event)">
+    </association-list>
 </div>   

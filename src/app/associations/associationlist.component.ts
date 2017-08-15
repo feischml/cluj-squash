@@ -10,10 +10,15 @@ export class AssociationlistComponent{
 
     @Input() associations: Association[];
     @Output() deletedAssociation = new EventEmitter<Association>();
+    @Output() selectedAssociation = new EventEmitter<Association>();
 
     constructor( ) { }
 
-    deleteAssociation(association){
-      this.deletedAssociation.emit(association);
+    private deleteAssociation(association: Association){
+        this.deletedAssociation.emit(association);
+    }
+
+    private selectAssociation(association: Association){
+        this.selectedAssociation.emit(association);
     }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Association } from '../model/association.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AssociationService } from '../service/association.service';
+import { Observable } from "rxjs/Observable";
 
 @Component({
     templateUrl: 'associationsformadmin.template.html',
-    providers: [AssociationService]
+    providers: [ AssociationService ]
 })
 export class AssociationsFormAdminComponent implements OnInit{
 
@@ -14,14 +15,13 @@ export class AssociationsFormAdminComponent implements OnInit{
 
     // Association that will be created or updated
     association = new Association();
+    association$: Observable<Association>;
 
     form: FormGroup;
 
     constructor(private _associationsService: AssociationService,
-                private _route: ActivatedRoute,
                 private _router: Router,
                 fb: FormBuilder){
-
         // Build the form
         this.form = fb.group({
             name: [],
@@ -31,31 +31,14 @@ export class AssociationsFormAdminComponent implements OnInit{
     }
 
     ngOnInit(){
-        // Get the params from the URL 
-        this._route.params.subscribe(params => {
-            var id = params["id"];
-        if (id){
-            // Get Association by id
-            this._associationsService.getAssociation(id.toString()).subscribe(
-                association => { 
-                    this.association = association;  
-                }, 
-                function(err){
-                    console.log(err);
-                })  
-            }
-        });
+        this.association$ = this._associationsService.selectedAssociation$;
+        this.association$.subscribe( association => this.association = association);
     }
 
     // Save changes made in the form
-    save(){        
-        var result = this._associationsService.updateCreateAssociation(this.association);
-        result.subscribe(res => {
-            this._router.navigate(['associationsadmin']);
-        },
-        err => {
-            console.log(err);
-        });
+    private save(){     
+        this._associationsService.updateCreateAssociationDispatch(this.association);
+        this._router.navigate(['associationsadmin']); 
     }
 
 }
