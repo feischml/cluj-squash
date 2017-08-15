@@ -35,7 +35,7 @@ export class AssociationsFormAdminComponent implements OnInit{
         this.association$.subscribe( association => this.association = association);
     }
 
-    // Save changes made in the form
+    // Save changes made in the form - update or create
     private save(){     
         this._associationsService.updateCreateAssociationDispatch(this.association);
         this._router.navigate(['associationsadmin']); 
