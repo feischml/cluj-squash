@@ -3,12 +3,13 @@ import { SeasonType } from '../model/seasontype.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeasonTypeService } from '../service/seasontype.service';
+import { ErrorHandler } from "app/common/errorhandler/errorhandler.component";
 
 @Component({
     templateUrl: 'seasontypeformadmin.template.html',
     providers: [SeasonTypeService]
 })
-export class SeasonTypeFormAdminComponent implements OnInit{
+export class SeasonTypeFormAdminComponent extends ErrorHandler implements OnInit{
 
     componentTitle = "Manage Season Type";
 
@@ -21,6 +22,8 @@ export class SeasonTypeFormAdminComponent implements OnInit{
                 private _route: ActivatedRoute,
                 private _router: Router,
                 fb: FormBuilder){
+        // Call super Errorhandler constructor
+        super();
 
         // Build the form
         this.form = fb.group({
@@ -53,7 +56,7 @@ export class SeasonTypeFormAdminComponent implements OnInit{
             this._router.navigate(['seasontypeadmin']);
         },
         err => {
-            console.log(err);
+            this.errorMassege = err._body;
         });
     }
 
