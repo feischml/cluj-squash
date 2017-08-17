@@ -1,27 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SeasonTypeService } from '../service/seasontype.service';
 import { SeasonType } from '../model/seasontype.model';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: 'seasontypeadmin.template.html',
     providers: [SeasonTypeService]
 })
-export class SeasonTypeAdminComponent implements OnInit{
+export class SeasonTypeAdminComponent extends MessageHandler implements OnInit{
 
     componentTitle = "Manage Season Types";
 
     // List of Season Types
     seasontypes = [];
 
-    constructor(private _seasonTypeService: SeasonTypeService){ }
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _seasonTypeService: SeasonTypeService){
+        // Call super constructor
+        super(_toasterToken);
+     }
 
     ngOnInit(){
         // Load the Season Types list
         this._seasonTypeService.getSeasonTypes().subscribe(
-            seasontypes => {
-                this.seasontypes = seasontypes
-            },
-            err => console.log(err)
+            response =>  this.seasontypes = response,
+            err => this.showError(err._body)
         );
     }
 
@@ -32,7 +36,7 @@ export class SeasonTypeAdminComponent implements OnInit{
                 let index = this.seasontypes.indexOf(seasontypeToDelete);
                 this.seasontypes.splice(index,1);
             },
-            err => console.log(err)
+            err => this.showError(err._body)
         );
     }
 

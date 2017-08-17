@@ -1,6 +1,8 @@
 1. Season Types 
-    a. message handling when duplicate season type entered; for example when season
+done   a. message handling when duplicate season type entered; for example when season
        is edited and modified, no message appears
+done   a2. apply message handling to all components
+
     b. when a season type is edited of deleted - message with the fact that this can lead to inconsistent data
        if there are already existent seasons with the given type -> message should appear only when 
        there really is a season created -> check to be implemented

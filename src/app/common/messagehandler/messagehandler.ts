@@ -11,11 +11,17 @@ export class MessageHandler {
     }
         
     public showError(message: string){
+        this._toasterService.options.hideEasing = 'linear';
+        this._toasterService.options.showMethod = 'slideDown';
         this._toasterService.error(message);
     }
 
     public showWarning(message: string){
         this._toasterService.warning(message);
+    }
+
+    public showInfo(message: string){
+        this._toasterService.info(message);
     }
 
 }
