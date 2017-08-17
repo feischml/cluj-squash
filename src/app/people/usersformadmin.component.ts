@@ -1,15 +1,17 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { User} from './model/users.model';
 import { UsersService } from './service/users.service';
 import { RolesService } from '../roles/service/roles.service'; 
 import { FormBuilder, FormGroup }    from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: './usersformadmin.template.html',
-    providers: [UsersService, RolesService]
+    providers: [ UsersService, RolesService ]
 })
-export class UsersFormAdminComponent implements OnInit{
+export class UsersFormAdminComponent extends MessageHandler implements OnInit{
 
     componentTitle = "Manage User Details";
 
@@ -19,12 +21,15 @@ export class UsersFormAdminComponent implements OnInit{
     serverRoles = []; // Roles list in original format
     roles = [];
 
-    constructor(private _userService: UsersService,
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _userService: UsersService,
                 private _rolesService: RolesService,
                 private _route: ActivatedRoute,
                 private _router: Router,
                 fb: FormBuilder){
-                    
+
+        // Call super MessageHandler constructor
+        super(_toasterToken);
         // create a new user each time sign-up is pressed
         this.user = new User();
 
@@ -42,13 +47,13 @@ export class UsersFormAdminComponent implements OnInit{
 
     ngOnInit(){
         this._route.params.subscribe(params => {
-            var id = params["id"];
+            let id = params["id"];
             if (!id)
-                console.log('Error reading id of User!');
-             else{
+                this.showError('Error reading id of User!');
+            else{
                 this._userService.getUserById(id).subscribe(
-                    user => {
-                        this.user = user;
+                    response => {
+                        this.user = response;
                         // Load also roles
                         this._rolesService.getRoles().subscribe(
                             roles => {
@@ -58,22 +63,17 @@ export class UsersFormAdminComponent implements OnInit{
                                 }
                                 this.mapRoles(false);
                             },
-                            err => {
-                                console.log(err);
-                            }
+                            err => this.showError(err._body)
                         );
                     },
-                    error => {
-                        console.log(error);
-                    }
+                    err => this.showError(err._body) 
                 )
-             }   
+            }   
         });
-        
     }
 
     // Save
-    save(){
+    private save(){
         // Set the new roles
         this.user.roleIds = [];
         this.roles.forEach(element => {
@@ -87,9 +87,7 @@ export class UsersFormAdminComponent implements OnInit{
                 this.user = user;
                 this._router.navigate(['usersadmin']);
             },
-            err => { 
-                console.log(err)
-            }
+            err => this.showError(err._body)
         );
     }
 

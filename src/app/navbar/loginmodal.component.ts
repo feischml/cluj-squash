@@ -1,14 +1,16 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Inject } from '@angular/core';
 import { AuthService } from '../people/service/auth.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../people/model/users.model';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     selector: 'loginmodal',
     templateUrl: './loginmodal.template.html',
-    providers: [AuthService]
+    providers: [ AuthService] 
 })
-export class LoginmodalComponent{
+export class LoginmodalComponent extends MessageHandler{
 
     form: FormGroup;
     user: User;
@@ -16,32 +18,38 @@ export class LoginmodalComponent{
     @Output() on_user_has_logged_in : EventEmitter<any> = new EventEmitter();
     @Output() on_admin_has_logged_in : EventEmitter<any> = new EventEmitter();
 
-    constructor(private _authService: AuthService,
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _authService: AuthService,
                 fb: FormBuilder){
+
+        // Call super MessageHandler constructor
+        super(_toasterToken)
+
         // Create the form
         this.form = fb.group({
             username: [],
             password: []
         })
+
         // Create new User
         this.user = new User();
     }
 
     // Log In pressed
-    logIn(){
-        var password = this.user.password;
-        var username = this.user.username;
+    private logIn(){
+        let password = this.user.password;
+        let username = this.user.username;
         this._authService.loginUser(username, password).subscribe(
-            user => {
-                if (user){ // login successful
-                    this.user = user['user'];
+            response => {
+                if (response){ // login successful
+                    this.user = response['user'];
                     this.user.password = password;
                     // Propagate to parent the fact that we are logged in
                     this.on_user_has_logged_in.emit(this.user);
-                    this.on_admin_has_logged_in.emit(user['admin']);
+                    this.on_admin_has_logged_in.emit(response['admin']);
                 }
             },
-            err => alert(err['_body'])
+            err => this.showError(err._body)
     )};
 
 }

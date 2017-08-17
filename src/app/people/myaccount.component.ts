@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { User } from "app/people/model/users.model";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { RolesService } from "app/roles/service/roles.service";
@@ -6,12 +6,14 @@ import { UsersService } from "app/people/service/users.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppConstants } from "app/app.constants";
 import { LclStorageService } from "app/lclstorage/lclstorage.service";
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: './myaccount.template.html',
-    providers: [UsersService, RolesService]
+    providers: [ UsersService, RolesService ]
 })
-export class MyAccountComponent{
+export class MyAccountComponent extends MessageHandler{
 
 componentTitle = "Edit my account";
 
@@ -21,19 +23,21 @@ componentTitle = "Edit my account";
     serverRoles = []; // Roles list in original format
     roles = [];
 
-    private lclStorage: LclStorageService;
-
-    constructor(private _userService: UsersService,
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _userService: UsersService,
                 private _rolesService: RolesService,
                 private _route: ActivatedRoute,
                 private _router: Router,
+                private _lclStorage: LclStorageService,
                 fb: FormBuilder){
 
+        // Call super MessageHandler constructor
+        super(_toasterToken);
         // initialize local storage    
-        this.lclStorage = new LclStorageService();
+        this._lclStorage = new LclStorageService();
 
         // create a new user each time sign-up is pressed
-        this.user = JSON.parse(this.lclStorage.getItem(AppConstants.LOGGED_USER));
+        this.user = JSON.parse(this._lclStorage.getItem(AppConstants.LOGGED_USER));
 
         // Creat the form
         this.form = fb.group({
@@ -48,38 +52,32 @@ componentTitle = "Edit my account";
      }
 
     ngOnInit(){
-        
-            var id = this.user["_id"];
-            if (!id)
-                console.log('Error reading id of User!');
-             else{
-                this._userService.getUserById(id).subscribe(
-                    user => {
-                        this.user = user;
-                        // Load also roles
-                        this._rolesService.getRoles().subscribe(
-                            roles => {
-                                for (let i = 0; i < roles.length; i++){   
-                                    this.serverRoles.push({ id: roles[i]._id, name: roles[i].name, 
-                                        selected: false });
-                                }
-                                this.mapRoles(false);
-                            },
-                            err => {
-                                console.log(err);
+        let id = this.user["_id"];
+        if (!id)
+            this.showError('Error reading id of User!');
+        else{
+            this._userService.getUserById(id).subscribe(
+                response => {
+                    this.user = response;
+                    // Load also roles
+                    this._rolesService.getRoles().subscribe(
+                        roles => {
+                            for (let i = 0; i < roles.length; i++){   
+                                this.serverRoles.push({ id: roles[i]._id, name: roles[i].name, 
+                                    selected: false });
                             }
-                        );
-                    },
-                    error => {
-                        console.log(error);
-                    }
-                )
-             }   
-        
+                            this.mapRoles(false);
+                        },
+                        err => this.showError(err._body)
+                    );
+                },
+                error => this.showError(error._body)
+            )
+        }   
     }
 
     // Save
-    save(){
+    private save(){
         // Set the new roles
         this.user.roleIds = [];
         this.roles.forEach(element => {
@@ -89,13 +87,11 @@ componentTitle = "Edit my account";
 
         // Update User
         this._userService.updateUser(this.user).subscribe(
-            user => {
-                this.user = user;
+            response => {
+                this.user = response;
                 this._router.navigate(['home']);
             },
-            err => { 
-                console.log(err)
-            }
+            err => this.showError(err._body)
         );
     }
 

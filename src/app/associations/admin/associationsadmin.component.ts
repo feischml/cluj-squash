@@ -12,13 +12,11 @@ export class AssociationsAdminComponent implements OnInit{
 
     //Component Title
     componentTitle = "Manage Associations";
-
     //Associations Observable returned from the Store
     associations$: Observable<Association[]>;
 
-    constructor( private _associationsService: AssociationService,
-                 //Router defined for navigation between pages
-                 private _router: Router ){ }
+    constructor(private _associationsService: AssociationService,
+                private _router: Router ){ }
 
     ngOnInit(){
         this.associations$ = this._associationsService.associations$;

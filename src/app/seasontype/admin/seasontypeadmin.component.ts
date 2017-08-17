@@ -6,18 +6,18 @@ import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: 'seasontypeadmin.template.html',
-    providers: [SeasonTypeService]
+    providers: [ SeasonTypeService ]
 })
 export class SeasonTypeAdminComponent extends MessageHandler implements OnInit{
 
     componentTitle = "Manage Season Types";
-
     // List of Season Types
     seasontypes = [];
 
     constructor(@Inject( ToasterToken ) private _toasterToken: any,
                 private _seasonTypeService: SeasonTypeService){
-        // Call super constructor
+
+        // Call super MessageHandler constructor
         super(_toasterToken);
      }
 

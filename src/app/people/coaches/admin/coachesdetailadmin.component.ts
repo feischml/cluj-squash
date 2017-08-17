@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CoachesService } from '../../service/coaches.service';
 import { CoachUser } from '../../model/coachuser.model'; 
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: './coachesdetailadmin.template.html',
-    providers: [CoachesService]
+    providers: [ CoachesService ]
 })
-export class CoachesDetailAdminComponent implements OnInit{
+export class CoachesDetailAdminComponent extends MessageHandler implements OnInit{
 
     // Coach with details which will be on the screen
     coachUser: CoachUser;
     form: FormGroup;
-
     componentTitle = "Manage Coach Details";
 
-    constructor(private _coachService: CoachesService,
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _coachService: CoachesService,
                 fb: FormBuilder,
                 private _route: ActivatedRoute,
                 private _router: Router){
+
+        // Call super MessageHandler constructor
+        super(_toasterToken);
         
         // Init coachUser
         this.coachUser = new CoachUser();
@@ -39,31 +44,26 @@ export class CoachesDetailAdminComponent implements OnInit{
     // Load the Coach with the User details
     ngOnInit(){
         this._route.params.subscribe(params => {
-            var id = params["id"];
+            let id = params["id"];
             if (!id)
-                console.log('Error reading id of Coach!');
-             else{
+                this.showError('Error reading id of Coach!');
+            else{
                 this._coachService.getCoachById(id).subscribe(
-                    coachUser => {
-                        this.coachUser = coachUser;
-                    },
-                    err => {
-                        console.log(err);
-                    });
-             }
+                    response => this.coachUser = response,
+                    err => this.showError(err._body)
+                );
+            }
         }
     )}
 
     // Save coach reelevant details
-    save(){
+    private save(){
         this._coachService.updateCoach(this.coachUser).subscribe(
-            coachUser => {
-                this.coachUser = coachUser;
+            response => {
+                this.coachUser = response;
                 this._router.navigate(['coachesadmin']);
             },
-            err => { 
-                console.log(err)
-            }
+            err => this.showError(err._body)
         );
     }
 

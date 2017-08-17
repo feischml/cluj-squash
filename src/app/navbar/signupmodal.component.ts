@@ -1,18 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { UsersService } from '../people/service/users.service';
 import { RolesService } from '../roles/service/roles.service';
 import { User } from '../people/model/users.model';
 //import { Role } from '../roles/model/roles.model';
 import { FormBuilder, FormGroup }    from '@angular/forms';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 // ToDo - refactor with ng-bootstarp MODAL -> at the moment cannot close when pressed Sign-Up
 
 @Component({
     selector: 'signupmodal',
     templateUrl: './signupmodal.template.html',
-    providers: [UsersService, RolesService]
+    providers: [ UsersService, RolesService ]
 })
-export class SignupmodalComponent implements OnInit{
+export class SignupmodalComponent extends MessageHandler implements OnInit{
 
     // User to be created
     user: User;
@@ -20,9 +22,14 @@ export class SignupmodalComponent implements OnInit{
     rePassword: String;
     form: FormGroup;
 
-    constructor(private _usersService: UsersService,
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _usersService: UsersService,
                 fb: FormBuilder,
                 private _rolesService: RolesService){ 
+
+        // Call super MessageHandler constructor
+        super(_toasterToken);
+        
         // create a new user each time sign-up is pressed
         this.user = new User();
 
@@ -48,12 +55,12 @@ export class SignupmodalComponent implements OnInit{
                         this.roles.push({ id: roles[i]._id, name:roles[i].name, selected: false});
                     }   
             },
-            err => { console.log(err)}
+            err => this.showError(err._body)
         );
     }
 
     // Handle Sign-Up button press
-    register(){
+    private register(){
         // Set the selected Roles for the registering User
         this.roles.forEach(element => {
             if(element.selected == true)
@@ -61,13 +68,13 @@ export class SignupmodalComponent implements OnInit{
         }); 
         this._usersService.registerUser(this.user).subscribe(
             res => {
-                alert("Registration successfull!");
+                this.showSuccess("Registration successfull!");
                 // clear all fields
                 this.cancel();
             },
             err => {
-                console.log(err);
-                alert("Registration unsuccessfull, please try again!")
+                this.showError("Registration unsuccessfull, please try again!");
+                this.showError(err._body);
                 // clear all fields
                 this.cancel();
             }
@@ -75,7 +82,7 @@ export class SignupmodalComponent implements OnInit{
     }
 
     // Handle Cancel button press
-    cancel(){
+    private cancel(){
         // Reset the values in the fields
         this.user = new User();
         this.form.reset();

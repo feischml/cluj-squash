@@ -1,38 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SeasonService } from '../service/season.service';
 import { Season } from '../model/season.model';
+import { MessageHandler } from "app/common/messagehandler/messagehandler";
+import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: 'seasonadmin.template.html',
-    providers: [SeasonService]
+    providers: [ SeasonService ]
 })
-export class SeasonAdminComponent implements OnInit{
+export class SeasonAdminComponent extends MessageHandler implements OnInit{
 
     componentTitle = "Manage Seasons";
-
     // List of Seasons
     seasons = [];
 
-    constructor(private _seasonService: SeasonService){ }
+    constructor(@Inject( ToasterToken ) private _toasterToken: any,
+                private _seasonService: SeasonService){
+                    
+        // Call super MessageHandler constructor
+        super(_toasterToken);
+    }
 
     ngOnInit(){
         // Load the Seasons list
         this._seasonService.getSeasons().subscribe(
-            seasons => {
-                this.seasons = seasons
-            },
-            err => console.log(err)
+            response => this.seasons = response,
+            err => this.showError(err._body)
         );
     }
 
     // Delete Season from list
-    deleteSeason(seasonToDelete: Season){
+    private deleteSeason(seasonToDelete: Season){
         this._seasonService.deleteSeason(seasonToDelete).subscribe(
-            season => {
+            response => {
                 let index = this.seasons.indexOf(seasonToDelete);
                 this.seasons.splice(index,1);
             },
-            err => console.log(err)
+            err => this.showError(err._body)
         );
     }
 

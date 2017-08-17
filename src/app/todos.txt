@@ -40,3 +40,9 @@ done   a2. apply message handling to all components
 9. Location implementation -> google maps and coordinates where it is needed
 
 10. Internationalization
+
+11. Form field validations
+
+12. Do not send password back when logged in
+
+13. Edit Player / Coach Profile when logged in as Player/Coach -> under point 8.

@@ -8,7 +8,7 @@ import { ToasterToken } from "app/common/toaster/toaster.service";
 
 @Component({
     templateUrl: 'seasontypeformadmin.template.html',
-    providers: [SeasonTypeService]
+    providers: [ SeasonTypeService ]
 })
 export class SeasonTypeFormAdminComponent extends MessageHandler implements OnInit{
 
