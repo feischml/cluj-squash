@@ -33,7 +33,7 @@ export class RolesAdminComponent extends MessageHandler implements OnInit{
         this._rolesService.deleteRole(role).subscribe(
             response => {
                 if (response){ // if not null then delete it from the table
-                    let index = this.roles.indexOf(response);
+                    let index = this.roles.indexOf(role);
                     this.roles.splice(index,1);
                 }
             },

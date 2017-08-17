@@ -41,7 +41,7 @@ export class EventsAdminComponent extends MessageHandler implements OnInit{
 
     private deleteEvent(event: Events){
         this._eventsService.deleteEvent(event).subscribe(
-            event => {
+            response => {
                 let index = this.events.indexOf(event);
                 this.events.splice(index, 1);
             },

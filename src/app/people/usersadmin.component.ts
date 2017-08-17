@@ -33,7 +33,7 @@ export class UsersAdminComponent extends MessageHandler implements OnInit{
     private deleteUser(user){
         this._userService.deleteUser(user).subscribe(
             res => { 
-                let index = this.users.indexOf(res)
+                let index = this.users.indexOf(user)
                 this.users.splice(index,1);
             },
             err => this.showError(err._body)

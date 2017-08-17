@@ -30,7 +30,7 @@ export class SeasonTypeAdminComponent extends MessageHandler implements OnInit{
     }
 
     // Delete SeasonType from list
-    deleteSeasonType(seasontypeToDelete: SeasonType){
+    private deleteSeasonType(seasontypeToDelete: SeasonType){
         this._seasonTypeService.deleteSeasonType(seasontypeToDelete).subscribe(
             seasontype => {
                 let index = this.seasontypes.indexOf(seasontypeToDelete);

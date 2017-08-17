@@ -36,7 +36,7 @@ export class ClubsAdminComponent extends MessageHandler implements OnInit{
     private deleteClub(club: Club){
         this._clubService.deleteClub(club).subscribe(
             response => {
-                let index = this.clubs.indexOf(response);
+                let index = this.clubs.indexOf(club);
                 this.clubs.splice(index,1);
             },
             err => this.showError(err._body)
