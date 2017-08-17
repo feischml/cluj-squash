@@ -27,9 +27,13 @@ import { SeasonTypeModules } from './seasontype/module/seasontype.module';
 import { SeasonModules } from './season/module/season.module';
 import { NotfoundpageModule } from "app/notfoundpage/module/notfoundpage.module";
 
+// NgRx imports
 import { StoreModule } from '@ngrx/store';
 import { assotiationsReducer } from './ngrx/reducer/associations.reducer';
 
+// Message Handler - Toaster import
+import { ToasterToken } from "app/common/toaster/toaster.service";
+declare let toastr : any; 
 
 @NgModule({
   declarations: [
@@ -57,7 +61,7 @@ import { assotiationsReducer } from './ngrx/reducer/associations.reducer';
     routing,
     StoreModule.forRoot({ associations: assotiationsReducer })
   ],
-  providers: [],
+  providers: [ { provide: ToasterToken, useValue: toastr } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
