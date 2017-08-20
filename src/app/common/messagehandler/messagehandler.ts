@@ -4,17 +4,16 @@ import { ToasterToken } from "app/common/toaster/toaster.service";
 @Component({ })
 export class MessageHandler {
 
-    constructor(private _toasterService: any){
-        _toasterService.options = {
-            "positionClass": "toast-top-center",            
-        }
-     }
+    constructor(private _toasterService: any){ }
 
     public showSuccess(message: string){
         this._toasterService.success(message);
     }
         
     public showError(message: string){
+        this._toasterService.options = {
+            positionClass: "toast-top-center",            
+        }
         this._toasterService.error(message);
     }
 
