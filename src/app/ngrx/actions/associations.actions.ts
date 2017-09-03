@@ -1,3 +1,5 @@
+// NGRX great tutorial: http://onehungrymind.com/build-better-angular-2-application-redux-ngrx/
+
 import { Action } from '@ngrx/store';
 import { Association } from '../../associations/model/association.model';
 
